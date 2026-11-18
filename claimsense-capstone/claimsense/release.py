@@ -26,11 +26,11 @@ class Release:
 
     @classmethod
     def load(cls, version: str, root: Path = RELEASES) -> "Release":
-        return cls(**json.loads((root / f"{version}.json").read_text()))
+        return cls(**json.loads((root / f"{version}.json").read_text(encoding="utf-8")))
 
 
 def active_version(root: Path = RELEASES) -> str:
-    return (root / "ACTIVE").read_text().strip()
+    return (root / "ACTIVE").read_text(encoding="utf-8").strip()
 
 
 def active(root: Path = RELEASES) -> Release:
@@ -39,15 +39,15 @@ def active(root: Path = RELEASES) -> Release:
 
 def promote(version: str, actor: str, reason: str, root: Path = RELEASES) -> None:
     Release.load(version, root)                       # must exist and parse
-    (root / "ACTIVE").write_text(version + "\n")
-    with (root / "HISTORY.log").open("a") as f:
+    (root / "ACTIVE").write_text(version + "\n", encoding="utf-8")
+    with (root / "HISTORY.log").open("a", encoding="utf-8") as f:
         f.write(json.dumps({"ts": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "version": version,
                             "actor": actor, "reason": reason}) + "\n")
 
 
 def history(root: Path = RELEASES) -> list[dict]:
     p = root / "HISTORY.log"
-    return [json.loads(l) for l in p.read_text().splitlines() if l.strip()] if p.exists() else []
+    return [json.loads(l) for l in p.read_text(encoding="utf-8").splitlines() if l.strip()] if p.exists() else []
 
 
 def rollback(actor: str, reason: str, root: Path = RELEASES) -> str:

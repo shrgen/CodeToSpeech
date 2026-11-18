@@ -40,7 +40,7 @@ def main() -> None:
         print(f"{name:<14} {rep['passed']}/{rep['cases']}  adversarial {out[name]['adversarial_passed']}/"
               f"{len(adv)}  gate {'PASSED' if rep['gate_passed'] else 'FAILED'}")
     pipeline_mod.check = check
-    (ROOT / "runs" / "ablation.json").write_text(json.dumps(out, indent=1) + "\n")
+    (ROOT / "runs" / "ablation.json").write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

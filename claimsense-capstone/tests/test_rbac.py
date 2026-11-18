@@ -5,7 +5,7 @@ import pytest
 
 from claimsense.door import AccessDenied, ClaimsDoor
 
-ORACLE = json.loads((Path(__file__).parent / "portal_access_oracle.json").read_text())
+ORACLE = json.loads((Path(__file__).parent / "portal_access_oracle.json").read_text(encoding="utf-8"))
 
 
 def test_door_matches_portal_access_table_exactly():

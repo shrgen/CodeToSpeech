@@ -161,7 +161,7 @@ def build(traces: Path, out: Path, eval_reports: list[Path] | None = None, event
     passed: dict[str, bool] = {}
     latest_eval = None
     for p in eval_reports or []:
-        rep = json.loads(Path(p).read_text())
+        rep = json.loads(Path(p).read_text(encoding="utf-8"))
         for r in rep.get("results", []):
             if r.get("trace_id"):
                 passed[r["trace_id"]] = r["passed"]
@@ -224,5 +224,5 @@ def build(traces: Path, out: Path, eval_reports: list[Path] | None = None, event
 <div><h2>Verdict source</h2><div class="card">{table(s['verdict_sources'], 'source')}</div></div></div>
 </main><script>{JS}</script></body></html>"""
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(page)
+    out.write_text(page, encoding="utf-8")
     return {"summary": s, "alarm_fired": alarm, "pass_rate": pass_rate, "rows": len(rows)}

@@ -35,7 +35,7 @@ SUITES = {"golden": ROOT / "evals" / "golden_set.json", "smoke": ROOT / "evals" 
 
 def load_suite(name_or_path: str) -> dict[str, Any]:
     p = SUITES.get(name_or_path, Path(name_or_path))
-    return json.loads(Path(p).read_text())
+    return json.loads(Path(p).read_text(encoding="utf-8"))
 
 
 @dataclass

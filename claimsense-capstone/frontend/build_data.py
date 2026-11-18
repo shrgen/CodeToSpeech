@@ -27,8 +27,8 @@ FE = ROOT / "frontend"
 
 
 def main() -> None:
-    seed = json.loads((ROOT / "claimsense" / "data" / "seed.json").read_text())
-    users = json.loads((ROOT / "claimsense" / "data" / "users.json").read_text())
+    seed = json.loads((ROOT / "claimsense" / "data" / "seed.json").read_text(encoding="utf-8"))
+    users = json.loads((ROOT / "claimsense" / "data" / "users.json").read_text(encoding="utf-8"))
     door = ClaimsDoor(audit=AuditLog())
     rel = active()
     tracer = Tracer(simulate_model_latency=True)
@@ -48,10 +48,10 @@ def main() -> None:
 
     def load(p):
         p = ROOT / p
-        return json.loads(p.read_text()) if p.exists() else None
+        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
 
     ev = load("runs/eval_golden_mock_v1.0.0.json")
-    cases = {c["case_id"]: c for c in json.loads((ROOT / "evals" / "golden_set.json").read_text())["cases"]}
+    cases = {c["case_id"]: c for c in json.loads((ROOT / "evals" / "golden_set.json").read_text(encoding="utf-8"))["cases"]}
     evals = None
     if ev:
         evals = {k: ev[k] for k in ("suite", "brain", "release", "cases", "passed", "pass_rate", "gate_passed",
@@ -66,7 +66,7 @@ def main() -> None:
         drill = {k: drill[k] for k in ("started", "events", "blast_radius", "time_to_detect_s", "requests_to_detect",
                                        "time_to_verified_recovery_s", "gates_after_rollback", "gate_on_bad_release",
                                        "spawned_case", "bad_release", "baseline", "requests")}
-    ops = summarize([json.loads(l) for l in (ROOT / "runs/traces/golden_mock_v1.0.0.jsonl").read_text().splitlines()]) \
+    ops = summarize([json.loads(l) for l in (ROOT / "runs/traces/golden_mock_v1.0.0.jsonl").read_text(encoding="utf-8").splitlines()]) \
         if (ROOT / "runs/traces/golden_mock_v1.0.0.jsonl").exists() else None
 
     data = {
@@ -76,7 +76,7 @@ def main() -> None:
         "clauses": [{"id": c.clause_id, "title": c.title, "text": c.text} for c in load_corpus()],
         "audit": [r.__dict__ for r in door.audit.rows], "evals": evals, "drill": drill, "ops": ops,
     }
-    (FE / "data.js").write_text("window.CLAIMSENSE = " + json.dumps(data, separators=(",", ":")) + ";\n")
+    (FE / "data.js").write_text("window.CLAIMSENSE = " + json.dumps(data, separators=(",", ":")) + ";\n", encoding="utf-8")
     for src, dst in [("ops/dashboard.html", "ops.html"), ("runs/drill/dashboard.html", "drill.html")]:
         if (ROOT / src).exists():
             shutil.copy(ROOT / src, FE / dst)

@@ -67,7 +67,7 @@ def cmd_eval(a) -> int:
     rep["run_id"] = f"{name}_{stamp}"
     out = Path(a.out) if a.out else RUNS / f"eval_{name}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(rep, indent=1) + "\n")
+    out.write_text(json.dumps(rep, indent=1) + "\n", encoding="utf-8")
     print(format_report(rep))
     print(f"report: {out.relative_to(ROOT) if out.is_relative_to(ROOT) else out}")
     return 0 if rep["gate_passed"] else 1
@@ -136,9 +136,9 @@ def cmd_user(a) -> int:
         print(f"--group must be one of {sorted(ClaimsDoor.GROUPS)}", file=sys.stderr)
         return 2
     users[a.id] = {"group": a.group, "name": a.name}
-    path.write_text(json.dumps(users, indent=1) + "\n")
+    path.write_text(json.dumps(users, indent=1) + "\n", encoding="utf-8")
     ClaimsDoor()                                     # re-validate the whole user file
-    with (RUNS / "admin.log").open("a") as f:
+    with (RUNS / "admin.log").open("a", encoding="utf-8") as f:
         f.write(json.dumps({"ts": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "action": "user.add",
                             "user": a.id, "group": a.group, "by": a.actor}) + "\n")
     print(f"added {a.id} ({a.group}); they can read: "
@@ -150,7 +150,7 @@ def corpus_problems(directory: Path = CORPUS_DIR) -> tuple[list[str], list[str]]
     problems, info = [], []
     seen: dict[str, str] = {}
     for f in sorted(directory.glob("*.md")):
-        first = (f.read_text().strip().splitlines() or [""])[0]
+        first = (f.read_text(encoding="utf-8").strip().splitlines() or [""])[0]
         m = CLAUSE_ID.match(first)
         if not m:
             problems.append(f"{f.name}: first line must be '# CLS-XXX-NNN — Title'")
@@ -161,10 +161,10 @@ def corpus_problems(directory: Path = CORPUS_DIR) -> tuple[list[str], list[str]]
         if cid in seen:
             problems.append(f"{cid} defined twice ({seen[cid]}, {f.name})")
         seen[cid] = f.name
-        hits = injection_hits(f.read_text())
+        hits = injection_hits(f.read_text(encoding="utf-8"))
         if hits:
             problems.append(f"{cid}: instruction-like text would be quarantined ({hits[0]})")
-    code = " ".join(p.read_text() for p in (ROOT / "claimsense").glob("*.py"))
+    code = " ".join(p.read_text(encoding="utf-8") for p in (ROOT / "claimsense").glob("*.py"))
     for cid in sorted(set(re.findall(r"CLS-[A-Z]+-\d{3}", code))):
         if cid not in seen:
             problems.append(f"{cid} is referenced by the code but missing from the corpus")

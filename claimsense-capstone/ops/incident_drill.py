@@ -75,8 +75,8 @@ def main(argv=None) -> int:
     for f in (ROOT / "releases").glob("*.json"):
         shutil.copy(f, root / f.name)
     good = rel.active_version()
-    (root / "ACTIVE").write_text(good + "\n")
-    (root / "HISTORY.log").write_text("")
+    (root / "ACTIVE").write_text(good + "\n", encoding="utf-8")
+    (root / "HISTORY.log").write_text("", encoding="utf-8")
     rel.promote(good, "drill", "drill start: baseline release", root)
 
     brain = get_brain(a.brain)
@@ -146,14 +146,14 @@ def main(argv=None) -> int:
                        rationale=f"Spawned by the incident drill: failed on {a.bad_release} "
                                  f"({'; '.join(first_bad['row']['failures'])}). " + c["rationale"])
         reg_path = ROOT / "evals" / "regression_set.json"
-        reg = json.loads(reg_path.read_text()) if reg_path.exists() else {
+        reg = json.loads(reg_path.read_text(encoding="utf-8")) if reg_path.exists() else {
             "meta": {"suite": "regression", "version": "1.0", "cases": 0,
                      "gate": "every regression case must keep passing"}, "cases": []}
         if not any(x["claim_id"] == spawned["claim_id"] and x["subfamily"] == spawned["subfamily"]
                    for x in reg["cases"]):
             reg["cases"].append(spawned)
         reg["meta"]["cases"] = len(reg["cases"])
-        reg_path.write_text(json.dumps(reg, indent=1) + "\n")
+        reg_path.write_text(json.dumps(reg, indent=1) + "\n", encoding="utf-8")
 
     on_bad = [x for x in rows if x["release"] == a.bad_release]
     blast = {"requests_on_bad_release": len(on_bad), "failed": sum(not x["passed"] for x in on_bad),
@@ -176,8 +176,8 @@ def main(argv=None) -> int:
         "spawned_case": spawned["case_id"] if spawned else None,
         "release_history": rel.history(root), "rows": rows,
     }
-    (OUT / "drill_log.json").write_text(json.dumps(log, indent=1) + "\n")
-    (OUT / "RCA.md").write_text(rca(log, first_bad))
+    (OUT / "drill_log.json").write_text(json.dumps(log, indent=1) + "\n", encoding="utf-8")
+    (OUT / "RCA.md").write_text(rca(log, first_bad), encoding="utf-8")
     build(OUT / "incident_traces.jsonl", OUT / "dashboard.html",
           eval_reports=[], events=[{"i": e["i"], "label": e["kind"]} for e in events if e["kind"] != "recovered"],
           title="ClaimSense — incident drill", subtitle=f"Drill run {iso(t_start)} · {a.requests} requests · "
@@ -194,7 +194,7 @@ def _attach_pass_marks(path: Path, rows, events) -> None:
     """Rebuild the drill dashboard with per-request pass/fail so the pass-rate line shows."""
     fake = path.parent / "_drill_eval.json"
     fake.write_text(json.dumps({"suite": "drill", "results": [{"trace_id": r["trace_id"], "passed": r["passed"]}
-                                                               for r in rows]}))
+                                                               for r in rows]}), encoding="utf-8")
     build(path.parent / "incident_traces.jsonl", path, eval_reports=[fake],
           events=[{"i": e["i"], "label": e["kind"]} for e in events if e["kind"] != "recovered"],
           title="ClaimSense — incident drill",

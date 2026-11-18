@@ -12,7 +12,7 @@ RELEASES = Path(__file__).resolve().parent.parent / "releases"
 def test_promote_and_rollback(tmp_path):
     for f in RELEASES.glob("*.json"):
         shutil.copy(f, tmp_path / f.name)
-    (tmp_path / "ACTIVE").write_text("v1.0.0\n")
+    (tmp_path / "ACTIVE").write_text("v1.0.0\n", encoding="utf-8")
     rel.promote("v1.0.0", "test", "baseline", tmp_path)
     rel.promote("v1.1.0", "test", "bad push", tmp_path)
     assert rel.active_version(tmp_path) == "v1.1.0"

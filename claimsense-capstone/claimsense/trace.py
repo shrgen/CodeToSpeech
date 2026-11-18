@@ -48,7 +48,7 @@ class Tracer:
             self.spans.append(rec)
             if self.path:
                 self.path.parent.mkdir(parents=True, exist_ok=True)
-                with self.path.open("a") as f:
+                with self.path.open("a", encoding="utf-8") as f:
                     f.write(json.dumps(rec) + "\n")
 
 
@@ -59,7 +59,7 @@ def cost_usd(input_tokens: int, output_tokens: int) -> float:
 def load_spans(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
         return []
-    return [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
+    return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
 
 
 def percentile(xs: list[float], q: float) -> float:

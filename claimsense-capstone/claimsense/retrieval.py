@@ -43,7 +43,7 @@ def injection_hits(text: str) -> list[str]:
 def load_corpus(directory: Path = CORPUS_DIR, exclude: set[str] | None = None) -> list[Clause]:
     out = []
     for f in sorted(directory.glob("*.md")):
-        lines = f.read_text().strip().splitlines()
+        lines = f.read_text(encoding="utf-8").strip().splitlines()
         m = CLAUSE_ID.match(lines[0]) if lines else None
         if not m:
             continue

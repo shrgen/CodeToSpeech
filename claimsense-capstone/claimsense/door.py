@@ -63,12 +63,12 @@ class AuditLog:
             self.rows.append(row)
             if self.path:
                 self.path.parent.mkdir(parents=True, exist_ok=True)
-                with self.path.open("a") as f:
+                with self.path.open("a", encoding="utf-8") as f:
                     f.write(json.dumps(row.__dict__) + "\n")
 
 
 def load_users(path: Path | None = None) -> dict[str, dict[str, str]]:
-    return json.loads((path or DATA / "users.json").read_text())
+    return json.loads((path or DATA / "users.json").read_text(encoding="utf-8"))
 
 
 class ClaimsDoor:
@@ -78,7 +78,7 @@ class ClaimsDoor:
 
     def __init__(self, seed: dict[str, Any] | None = None, audit: AuditLog | None = None,
                  users: dict[str, dict[str, str]] | None = None, ticket_log: Path | None = None):
-        seed = seed or json.loads((DATA / "seed.json").read_text())
+        seed = seed or json.loads((DATA / "seed.json").read_text(encoding="utf-8"))
         self.users = users if users is not None else load_users()
         for u, info in self.users.items():
             if info.get("group") not in self.GROUPS:
@@ -95,7 +95,7 @@ class ClaimsDoor:
         # optional durable ticket log: replays keep idempotency across processes (CLI runs)
         self.ticket_log = ticket_log
         if ticket_log and ticket_log.exists():
-            for line in ticket_log.read_text().splitlines():
+            for line in ticket_log.read_text(encoding="utf-8").splitlines():
                 if line.strip():
                     rec = json.loads(line)
                     self._tickets[rec["idempotency_key"]] = rec["ticket"]
@@ -187,7 +187,7 @@ class ClaimsDoor:
             self._tickets[idempotency_key] = t
             if self.ticket_log:
                 self.ticket_log.parent.mkdir(parents=True, exist_ok=True)
-                with self.ticket_log.open("a") as f:
+                with self.ticket_log.open("a", encoding="utf-8") as f:
                     f.write(json.dumps({"idempotency_key": idempotency_key, "ticket": t}) + "\n")
             return dict(t)
 

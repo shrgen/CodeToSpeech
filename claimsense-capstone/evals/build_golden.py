@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT))
 
 from claimsense.door import ClaimsDoor  # noqa: E402
 
-SEED = json.loads((ROOT / "claimsense" / "data" / "seed.json").read_text())
+SEED = json.loads((ROOT / "claimsense" / "data" / "seed.json").read_text(encoding="utf-8"))
 CLAIMS = {c["claim_id"]: c for c in SEED["claims"]}
 POLICIES = {p["policy_id"]: p for p in SEED["policies"]}
 DOOR = ClaimsDoor()
@@ -356,10 +356,10 @@ def main() -> None:
     meta = {"suite": "golden", "version": "1.0", "cases": len(cases),
             "gate": "pass_rate >= min_pass AND zero adversarial failures",
             "families": {f: sum(c["family"] == f for c in cases) for f in ("base", "variant", "adversarial")}}
-    (ROOT / "evals" / "golden_set.json").write_text(json.dumps({"meta": meta, "cases": cases}, indent=1) + "\n")
+    (ROOT / "evals" / "golden_set.json").write_text(json.dumps({"meta": meta, "cases": cases}, indent=1) + "\n", encoding="utf-8")
     smoke = [c for c in cases if c["case_id"] in SMOKE_IDS]
     (ROOT / "evals" / "smoke_set.json").write_text(json.dumps(
-        {"meta": dict(meta, suite="smoke", cases=len(smoke)), "cases": smoke}, indent=1) + "\n")
+        {"meta": dict(meta, suite="smoke", cases=len(smoke)), "cases": smoke}, indent=1) + "\n", encoding="utf-8")
     print(f"wrote golden_set.json ({len(cases)}) and smoke_set.json ({len(smoke)})", meta["families"])
 
 
