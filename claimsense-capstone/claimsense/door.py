@@ -77,7 +77,7 @@ class ClaimsDoor:
     GROUPS = {"adjuster", "senior-adjuster", "fraud-investigator", "total-loss-appraiser"}
 
     def __init__(self, seed: dict[str, Any] | None = None, audit: AuditLog | None = None,
-                 users: dict[str, dict[str, str]] | None = None):
+                 users: dict[str, dict[str, str]] | None = None, ticket_log: Path | None = None):
         seed = seed or json.loads((DATA / "seed.json").read_text())
         self.users = users if users is not None else load_users()
         for u, info in self.users.items():
@@ -92,6 +92,14 @@ class ClaimsDoor:
         self._tickets: dict[str, dict[str, Any]] = {}
         self._ticket_seq = 0
         self._lock = threading.Lock()
+        # optional durable ticket log: replays keep idempotency across processes (CLI runs)
+        self.ticket_log = ticket_log
+        if ticket_log and ticket_log.exists():
+            for line in ticket_log.read_text().splitlines():
+                if line.strip():
+                    rec = json.loads(line)
+                    self._tickets[rec["idempotency_key"]] = rec["ticket"]
+                    self._ticket_seq = max(self._ticket_seq, int(rec["ticket"]["ticket_id"].split("-")[1]))
 
     # ── identity ────────────────────────────────────────────────────────────
     def identity(self, user_id: str) -> Identity:
@@ -177,6 +185,10 @@ class ClaimsDoor:
                  "author": ident.user_id, "body": body, "created": time.time(),
                  "body_sha256": hashlib.sha256(json.dumps(body, sort_keys=True).encode()).hexdigest()}
             self._tickets[idempotency_key] = t
+            if self.ticket_log:
+                self.ticket_log.parent.mkdir(parents=True, exist_ok=True)
+                with self.ticket_log.open("a") as f:
+                    f.write(json.dumps({"idempotency_key": idempotency_key, "ticket": t}) + "\n")
             return dict(t)
 
     def escalate(self, ident: Identity, claim_id: str, to_group: str, reason: str,

@@ -1,0 +1,5 @@
+# Live path only. The core package and the mock gate are stdlib-only.
+openai-agents[litellm]>=0.3
+pydantic>=2.6
+boto3>=1.34
+bedrock-agentcore>=0.1        # AgentCore Runtime entrypoint only
