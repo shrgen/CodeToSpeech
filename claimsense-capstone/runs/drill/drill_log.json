@@ -1,5 +1,5 @@
 {
- "started": "2026-11-18T02:20:42.560Z",
+ "started": "2026-11-18T02:30:02.895Z",
  "brain": "mock",
  "requests": 100,
  "baseline": "v1.0.0",
@@ -9,16 +9,16 @@
    "i": 30,
    "kind": "inject",
    "label": "v1.1.0 promoted (gate skipped)",
-   "ts": 1794968442.5971863,
-   "at": "2026-11-18T02:20:42.597Z"
+   "ts": 1794969010.225273,
+   "at": "2026-11-18T02:30:10.225Z"
   },
   {
    "i": 44,
    "kind": "detect",
    "label": "rolling pass rate 90% < 95% SLO",
-   "ts": 1794968442.6268137,
-   "at": "2026-11-18T02:20:42.626Z",
-   "trace_id": "trc-00146a100a7c",
+   "ts": 1794969013.7763953,
+   "at": "2026-11-18T02:30:13.776Z",
+   "trace_id": "trc-d643918688b1",
    "pass_rate": 0.9,
    "error_rate": 0.1
   },
@@ -26,15 +26,15 @@
    "i": 45,
    "kind": "rollback",
    "label": "rolled back to v1.0.0",
-   "ts": 1794968442.627923,
-   "at": "2026-11-18T02:20:42.627Z"
+   "ts": 1794969014.0286171,
+   "at": "2026-11-18T02:30:14.028Z"
   },
   {
-   "i": 100,
+   "i": 45,
    "kind": "recovered",
    "label": "smoke 10/10 + golden 150/150 gates passed on v1.0.0",
-   "ts": 1794968442.9360793,
-   "at": "2026-11-18T02:20:42.936Z"
+   "ts": 1794969014.180577,
+   "at": "2026-11-18T02:30:14.180Z"
   }
  ],
  "blast_radius": {
@@ -43,10 +43,10 @@
   "fallback_verdicts": 2,
   "unsafe_approvals": 0
  },
- "time_to_detect_s": 0.03,
+ "time_to_detect_s": 3.551,
  "requests_to_detect": 14,
- "time_to_verified_recovery_s": 0.309,
- "verification_s": 0.221,
+ "time_to_verified_recovery_s": 0.404,
+ "verification_s": 0.152,
  "gates_after_rollback": {
   "smoke": [
    10,
@@ -78,19 +78,19 @@
  "spawned_case": "REG-20261118-VAR-liability_only-07",
  "release_history": [
   {
-   "ts": "2026-11-18T02:20:42+0000",
+   "ts": "2026-11-18T02:30:02+0000",
    "version": "v1.0.0",
    "actor": "drill",
    "reason": "drill start: baseline release"
   },
   {
-   "ts": "2026-11-18T02:20:42+0000",
+   "ts": "2026-11-18T02:30:10+0000",
    "version": "v1.1.0",
    "actor": "drill",
    "reason": "staged regression: config pushed without the gate"
   },
   {
-   "ts": "2026-11-18T02:20:42+0000",
+   "ts": "2026-11-18T02:30:14+0000",
    "version": "v1.0.0",
    "actor": "on-call",
    "reason": "ROLLBACK from v1.1.0: drill: pass-rate SLO breach"
@@ -103,7 +103,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-1f4e370e21c1",
+   "trace_id": "trc-3561fd6dc87a",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -116,7 +116,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-52afb6b26b30",
+   "trace_id": "trc-72d15d521f3d",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -129,7 +129,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-6d2bf9472ce9",
+   "trace_id": "trc-2628ceb2c188",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -142,7 +142,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-11869b9d7414",
+   "trace_id": "trc-a7f47fdba49a",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -155,7 +155,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-79dad89316cf",
+   "trace_id": "trc-6d4ef2f33b16",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -168,7 +168,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-79bd55f5e712",
+   "trace_id": "trc-49bd2f4f3f00",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -181,7 +181,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-008aa71b6683",
+   "trace_id": "trc-6898ef0b54fd",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -194,7 +194,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-6e3027c7bb07",
+   "trace_id": "trc-50c027f6ed4b",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -207,7 +207,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-67754e1bd15f",
+   "trace_id": "trc-0c37ae725dd4",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -220,7 +220,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-4775b9e2f07a",
+   "trace_id": "trc-0d926d1d7378",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -233,7 +233,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-6268933a6a18",
+   "trace_id": "trc-d0fd5869ac95",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -246,7 +246,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-e0574e5a55bb",
+   "trace_id": "trc-5f16d0cabeab",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -259,7 +259,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-e835bdd5b8be",
+   "trace_id": "trc-22f7f2d38690",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -272,7 +272,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-ad92c7cce543",
+   "trace_id": "trc-280c507f242f",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -285,7 +285,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-897839db0be2",
+   "trace_id": "trc-25bebe8cb255",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -298,7 +298,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-c70973952625",
+   "trace_id": "trc-dcefee7c168b",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -311,7 +311,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-2aeb14dcca1c",
+   "trace_id": "trc-d4f9bbe3293b",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -324,7 +324,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-a1253c2bbda0",
+   "trace_id": "trc-8b591539be3a",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -337,7 +337,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-26f6e00e7c62",
+   "trace_id": "trc-3faa41604dbb",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -350,7 +350,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-e76fe2b1d3c0",
+   "trace_id": "trc-22f92306e5c9",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -363,7 +363,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-7750e879af04",
+   "trace_id": "trc-74c870976e2d",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -376,7 +376,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-c3be304bd271",
+   "trace_id": "trc-69ec601c0cd4",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -389,7 +389,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-91f3c890e83c",
+   "trace_id": "trc-fd612e447957",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -402,7 +402,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-2ec2cc55dc21",
+   "trace_id": "trc-cf337fb490a3",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -415,7 +415,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-e6790afb64e5",
+   "trace_id": "trc-2ea18a820990",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -428,7 +428,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-d42c557e6aa2",
+   "trace_id": "trc-3b882ded39b9",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -441,7 +441,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-c558ca3c6153",
+   "trace_id": "trc-1076f2cf2d05",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -454,7 +454,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-a8f9986ec52f",
+   "trace_id": "trc-8d0bb883fbd1",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -467,7 +467,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-393e0e05643b",
+   "trace_id": "trc-cf9ad23bb018",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -480,7 +480,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-00be46974a1a",
+   "trace_id": "trc-3423a8194953",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -493,7 +493,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-04171915843c",
+   "trace_id": "trc-a173d06b3dd6",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -506,7 +506,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-bd147fd8c816",
+   "trace_id": "trc-e4b8b81ffbdf",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -519,7 +519,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-1dc35e83e636",
+   "trace_id": "trc-a129d3cba677",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -532,7 +532,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-d68efab046d7",
+   "trace_id": "trc-0d3283260a56",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -545,7 +545,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-6f39c3615353",
+   "trace_id": "trc-a1dbdb5bc284",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -558,7 +558,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-b084c4422a61",
+   "trace_id": "trc-376d56172260",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -571,7 +571,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-ae1e69daba3e",
+   "trace_id": "trc-78333d4c4cf0",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -584,7 +584,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-daac941619a3",
+   "trace_id": "trc-ca19a93af509",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -597,7 +597,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-8c43121be1d6",
+   "trace_id": "trc-e652b8db75df",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -610,7 +610,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-f7a45ef671a9",
+   "trace_id": "trc-7c295e4226a2",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -623,7 +623,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-151c600c1a32",
+   "trace_id": "trc-1bc979e5a3cd",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -636,7 +636,7 @@
    "release": "v1.1.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-90210f5847b5",
+   "trace_id": "trc-55bf39695a39",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -649,7 +649,7 @@
    "release": "v1.1.0",
    "passed": false,
    "error": true,
-   "trace_id": "trc-d58eec6c100f",
+   "trace_id": "trc-5893ec0cc33e",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "RECOMMEND_DENY"
@@ -665,7 +665,7 @@
    "release": "v1.1.0",
    "passed": false,
    "error": true,
-   "trace_id": "trc-00146a100a7c",
+   "trace_id": "trc-d643918688b1",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "RECOMMEND_DENY"
@@ -681,7 +681,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-4447e40a06e6",
+   "trace_id": "trc-1d6a78ab71f6",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -694,7 +694,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-26d600309789",
+   "trace_id": "trc-b4c0367c94fa",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -707,7 +707,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-0e3f89894e61",
+   "trace_id": "trc-97711ae4c6b9",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -720,7 +720,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-ea03c50696b4",
+   "trace_id": "trc-6def13888b2c",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -733,7 +733,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-2151e9db0b82",
+   "trace_id": "trc-60de0df0926b",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -746,7 +746,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-c60afe3ea022",
+   "trace_id": "trc-9385d7f974f2",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -759,7 +759,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-29e2c4878a9f",
+   "trace_id": "trc-221e7da9fb7d",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -772,7 +772,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-e0db3d76f40a",
+   "trace_id": "trc-5a5efda4112a",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -785,7 +785,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-fc379f1bd125",
+   "trace_id": "trc-762ce0feb94c",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -798,7 +798,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-3429edd2a9d0",
+   "trace_id": "trc-789050512eed",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -811,7 +811,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-c690af09aa56",
+   "trace_id": "trc-adf46967befa",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -824,7 +824,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-a2d6b2857798",
+   "trace_id": "trc-571d07185abd",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -837,7 +837,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-d24a6a757712",
+   "trace_id": "trc-de0772442d67",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -850,7 +850,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-631a5c14a2b1",
+   "trace_id": "trc-ee1e678a8cb6",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -863,7 +863,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-8318dbb66a03",
+   "trace_id": "trc-258e28c44bbe",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -876,7 +876,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-edeb2fed30d3",
+   "trace_id": "trc-97888bb867bc",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -889,7 +889,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-88eb482f3701",
+   "trace_id": "trc-bb088da5829f",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -902,7 +902,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-d73f84982d00",
+   "trace_id": "trc-688d5660651e",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -915,7 +915,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-2906e66e735b",
+   "trace_id": "trc-9b30880fa648",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -928,7 +928,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-b3915a777672",
+   "trace_id": "trc-0b9f0dbf1a18",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -941,7 +941,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-26971a1a1c7d",
+   "trace_id": "trc-5652f63abd84",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -954,7 +954,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-d55e99cbded1",
+   "trace_id": "trc-0a3cc454b6be",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -967,7 +967,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-0c1ab95ee499",
+   "trace_id": "trc-781cf2193edc",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -980,7 +980,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-2331337cd482",
+   "trace_id": "trc-4382bcb3d1d4",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -993,7 +993,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-f1c987003697",
+   "trace_id": "trc-6b3769262e32",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1006,7 +1006,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-5895b6084599",
+   "trace_id": "trc-682c2f97ae89",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1019,7 +1019,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-0993530745c0",
+   "trace_id": "trc-5a877a244093",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1032,7 +1032,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-3e91d1fbf9eb",
+   "trace_id": "trc-ca91112eb502",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -1045,7 +1045,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-764cfcf568cc",
+   "trace_id": "trc-374d21f4f4c7",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1058,7 +1058,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-8732443e0ab0",
+   "trace_id": "trc-1691f83fe8c3",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1071,7 +1071,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-510c224073f9",
+   "trace_id": "trc-fe1e88492f90",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -1084,7 +1084,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-c645957e38dc",
+   "trace_id": "trc-d82080003543",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -1097,7 +1097,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-7cf0bad5602e",
+   "trace_id": "trc-856458ee45a4",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -1110,7 +1110,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-47ac197047f5",
+   "trace_id": "trc-87c7514b35ee",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -1123,7 +1123,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-340c71c57d51",
+   "trace_id": "trc-e39b6f04fe15",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1136,7 +1136,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-756114429870",
+   "trace_id": "trc-a1a563bbfdcf",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -1149,7 +1149,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-d4a49276d8cb",
+   "trace_id": "trc-fe293c3bf302",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1162,7 +1162,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-8fed399d9336",
+   "trace_id": "trc-c9edfebfb7a4",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -1175,7 +1175,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-9f3e012474f9",
+   "trace_id": "trc-12fd369a7c83",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -1188,7 +1188,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-36d2d31f62f5",
+   "trace_id": "trc-924f44418075",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -1201,7 +1201,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-46b581c6f3e5",
+   "trace_id": "trc-90e51f8a80e5",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -1214,7 +1214,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-bc676aa5046d",
+   "trace_id": "trc-ae1464ca4074",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -1227,7 +1227,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-21af43283466",
+   "trace_id": "trc-11fe772a5421",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1240,7 +1240,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-94dca9c0db5b",
+   "trace_id": "trc-e4258f3dc291",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1253,7 +1253,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-7f518005e2b2",
+   "trace_id": "trc-a02355e53ad6",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1266,7 +1266,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-7a5823e5780d",
+   "trace_id": "trc-c20ecff9b0e5",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -1279,7 +1279,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-ea6914a3c634",
+   "trace_id": "trc-479fce8b8cf7",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -1292,7 +1292,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-8f4d65900cdd",
+   "trace_id": "trc-1f70113c7443",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1305,7 +1305,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-72a64a9116e5",
+   "trace_id": "trc-7fbe1832683c",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1318,7 +1318,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-30701db7a63d",
+   "trace_id": "trc-813833df9828",
    "outcome": "RECOMMEND_APPROVE",
    "expected": [
     "RECOMMEND_APPROVE"
@@ -1331,7 +1331,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-3c9cf25e2791",
+   "trace_id": "trc-75809762de8d",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1344,7 +1344,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-cffadfd780e4",
+   "trace_id": "trc-47b36294675e",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"
@@ -1357,7 +1357,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-cbc8090c4110",
+   "trace_id": "trc-8cb279cdf646",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -1370,7 +1370,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-9f345a476a14",
+   "trace_id": "trc-95242f9967bf",
    "outcome": "ESCALATE_HUMAN",
    "expected": [
     "ESCALATE_HUMAN"
@@ -1383,7 +1383,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-1156fc32809f",
+   "trace_id": "trc-77aafadc786e",
    "outcome": "RECOMMEND_DENY",
    "expected": [
     "RECOMMEND_DENY"
@@ -1396,7 +1396,7 @@
    "release": "v1.0.0",
    "passed": true,
    "error": false,
-   "trace_id": "trc-262d28c74b94",
+   "trace_id": "trc-916f193da6fc",
    "outcome": "REFER_SIU",
    "expected": [
     "REFER_SIU"

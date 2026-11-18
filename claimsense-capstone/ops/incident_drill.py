@@ -84,6 +84,8 @@ def main(argv=None) -> int:
     official, cache = official_clause_ids(), {}
     events, rows = [], []
     detect_at = rollback_at = None
+    verified, t_verified, t_verify_start = False, 0.0, 0.0
+    smoke = golden = {}
     first_bad: dict | None = None
     t_start = time.time()
 
@@ -103,6 +105,16 @@ def main(argv=None) -> int:
             v = rel.rollback("on-call", "drill: pass-rate SLO breach", root)
             rollback_at = i
             event(i, "rollback", f"rolled back to {v}")
+            # verified recovery: the gates, on the rolled-back release, right now (before more traffic)
+            active_after = rel.active(root)
+            t_verify_start = time.time()
+            smoke = run_suite(load_suite("smoke"), brain, active_after, min_pass=0.95)
+            golden = run_suite(load_suite("golden"), brain, active_after, min_pass=0.95)
+            verified = smoke["gate_passed"] and golden["gate_passed"]
+            t_verified = time.time()
+            if verified:
+                event(i, "recovered", f"smoke {smoke['passed']}/{smoke['cases']} + golden "
+                      f"{golden['passed']}/{golden['cases']} gates passed on {active_after.version}")
         release = rel.active(root)
         r = run_case(c, brain, release, tracer, official, cache)
         rows.append({"i": i, "case_id": c["case_id"], "release": release.version, "passed": r.passed,
@@ -121,16 +133,9 @@ def main(argv=None) -> int:
         if not a.fast:
             time.sleep(a.pace)
 
-    # ── verified recovery: the gates, on the release that is active after rollback ──────────
-    active_after = rel.active(root)
-    t_verify_start = time.time()
-    smoke = run_suite(load_suite("smoke"), brain, active_after, min_pass=0.95)
-    golden = run_suite(load_suite("golden"), brain, active_after, min_pass=0.95)
-    verified = smoke["gate_passed"] and golden["gate_passed"]
-    t_verified = time.time()
-    if verified:
-        event(a.requests, "recovered", f"smoke {smoke['passed']}/{smoke['cases']} + golden "
-              f"{golden['passed']}/{golden['cases']} gates passed on {active_after.version}")
+    if rollback_at is None:
+        print("no rollback happened (no detection and no --rollback-at): nothing to verify")
+        return 1
     bad_gate = run_suite(load_suite("golden"), brain, rel.Release.load(a.bad_release, root), min_pass=0.95)
 
     # ── spawn a regression eval case from the first failing request on the bad release ──────

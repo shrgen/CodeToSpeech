@@ -117,7 +117,15 @@ releases/       v1.0.0 (good), v1.1.0 (drill: index drops CLS-LIAB-003 + CLS-PER
 Error-rate definition: a request is an error if it raised, or if its verdict came from the
 deterministic fallback (the model's output was rejected).
 
-## Still to build (in this order)
+## Build status (2026-11-18)
+
+Steps 1-8 below are built and verified on the mock brain (see README.md for the evidence
+table). Not done yet: a live Bedrock run (needs AWS credentials) and its numbers in
+docs/OBSERVATION.md §6; the promptfoo rubric run (needs Ollama or Bedrock); the AWS deploy
+(deployed URL + demo recording); the owner's W1-W2 links in docs/HANDOVER.md; owner review of
+docs/DECISIONS.md and the [owner] items in docs/INCIDENT_REPORT.md.
+
+## Original build plan (all built)
 
 1. `claimsense/live/sdk_agents.py` — BedrockBrain: three OpenAI Agents SDK agents (triage,
    evidence, decide) with pydantic `output_type`, `LitellmModel("bedrock/<model_id>")`, same

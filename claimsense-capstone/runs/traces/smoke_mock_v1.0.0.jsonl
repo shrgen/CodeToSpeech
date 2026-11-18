@@ -1,100 +1,100 @@
-{"trace_id": "trc-b540d6e1499f", "span": "door.bundle", "start": 1794968794.7636478, "kind": "tool", "dur_ms": 0.061}
-{"trace_id": "trc-b540d6e1499f", "span": "guard.input", "start": 1794968794.763874, "kind": "guard", "quarantined": [], "dur_ms": 0.006}
-{"trace_id": "trc-b540d6e1499f", "span": "agent.triage", "start": 1794968794.7639608, "kind": "model", "input_tokens": 750, "output_tokens": 12, "dur_ms": 0.388, "simulated_model_ms": 596.4}
-{"trace_id": "trc-b540d6e1499f", "span": "rules.facts", "start": 1794968794.7644236, "kind": "code", "dur_ms": 0.031}
-{"trace_id": "trc-b540d6e1499f", "span": "agent.evidence", "start": 1794968794.764484, "kind": "model", "input_tokens": 750, "output_tokens": 6, "dur_ms": 0.168, "simulated_model_ms": 793.7}
-{"trace_id": "trc-b540d6e1499f", "span": "retrieval.search", "start": 1794968794.764687, "kind": "tool", "retrieved": ["CLS-COLL-001", "CLS-PAY-012", "CLS-COMP-002", "CLS-DOC-009", "CLS-DED-004", "CLS-EXC-010"], "dur_ms": 0.059}
-{"trace_id": "trc-b540d6e1499f", "span": "agent.decide", "start": 1794968794.764789, "kind": "model", "input_tokens": 1514, "output_tokens": 75, "dur_ms": 0.184, "simulated_model_ms": 731.2}
-{"trace_id": "trc-b540d6e1499f", "span": "guard.output", "start": 1794968794.7650814, "kind": "guard", "violations": [], "dur_ms": 0.052}
-{"trace_id": "trc-b540d6e1499f", "span": "door.write_ticket", "start": 1794968794.7652776, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.023}
-{"trace_id": "trc-b540d6e1499f", "span": "claim.run", "start": 1794968794.7636337, "kind": "request", "claim_id": "CLM-2024-1800", "user": "alice", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_APPROVE", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003479, "simulated_total_model_ms": 2121.3, "input_tokens": 3014, "output_tokens": 93, "dur_ms": 1.698}
-{"trace_id": "trc-a8f3afb67718", "span": "door.bundle", "start": 1794968794.7658029, "kind": "tool", "dur_ms": 0.042}
-{"trace_id": "trc-a8f3afb67718", "span": "guard.input", "start": 1794968794.7658813, "kind": "guard", "quarantined": [], "dur_ms": 0.005}
-{"trace_id": "trc-a8f3afb67718", "span": "agent.triage", "start": 1794968794.7659225, "kind": "model", "input_tokens": 757, "output_tokens": 12, "dur_ms": 0.091, "simulated_model_ms": 350.1}
-{"trace_id": "trc-a8f3afb67718", "span": "rules.facts", "start": 1794968794.7660575, "kind": "code", "dur_ms": 0.022}
-{"trace_id": "trc-a8f3afb67718", "span": "agent.evidence", "start": 1794968794.7661042, "kind": "model", "input_tokens": 757, "output_tokens": 38, "dur_ms": 0.029, "simulated_model_ms": 372.7}
-{"trace_id": "trc-a8f3afb67718", "span": "retrieval.search", "start": 1794968794.7661617, "kind": "tool", "retrieved": ["CLS-FRD-007", "CLS-INJ-008", "CLS-DOC-009", "CLS-PAY-012", "CLS-COLL-001", "CLS-LIAB-003"], "dur_ms": 0.076}
-{"trace_id": "trc-a8f3afb67718", "span": "agent.decide", "start": 1794968794.7662868, "kind": "model", "input_tokens": 1587, "output_tokens": 110, "dur_ms": 0.045, "simulated_model_ms": 500.0}
-{"trace_id": "trc-a8f3afb67718", "span": "guard.output", "start": 1794968794.7663772, "kind": "guard", "violations": [], "dur_ms": 0.053}
-{"trace_id": "trc-a8f3afb67718", "span": "door.write_ticket", "start": 1794968794.7664914, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.021}
-{"trace_id": "trc-a8f3afb67718", "span": "claim.run", "start": 1794968794.7657974, "kind": "request", "claim_id": "CLM-2024-1873", "user": "carol", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "REFER_SIU", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003901, "simulated_total_model_ms": 1222.8, "input_tokens": 3101, "output_tokens": 160, "dur_ms": 0.743}
-{"trace_id": "trc-fa0aa5d4d223", "span": "door.bundle", "start": 1794968794.7669382, "kind": "tool", "dur_ms": 0.022}
-{"trace_id": "trc-fa0aa5d4d223", "span": "guard.input", "start": 1794968794.7670317, "kind": "guard", "quarantined": [], "dur_ms": 0.005}
-{"trace_id": "trc-fa0aa5d4d223", "span": "agent.triage", "start": 1794968794.7670774, "kind": "model", "input_tokens": 664, "output_tokens": 12, "dur_ms": 0.035, "simulated_model_ms": 481.6}
-{"trace_id": "trc-fa0aa5d4d223", "span": "rules.facts", "start": 1794968794.7671533, "kind": "code", "dur_ms": 0.015}
-{"trace_id": "trc-fa0aa5d4d223", "span": "agent.evidence", "start": 1794968794.7671907, "kind": "model", "input_tokens": 664, "output_tokens": 6, "dur_ms": 0.019, "simulated_model_ms": 772.6}
-{"trace_id": "trc-fa0aa5d4d223", "span": "retrieval.search", "start": 1794968794.7672355, "kind": "tool", "retrieved": ["CLS-PER-006", "CLS-DOC-009", "CLS-PAY-012", "CLS-COMP-002", "CLS-DED-004", "CLS-LIAB-003"], "dur_ms": 0.059}
-{"trace_id": "trc-fa0aa5d4d223", "span": "agent.decide", "start": 1794968794.7673256, "kind": "model", "input_tokens": 1445, "output_tokens": 50, "dur_ms": 0.039, "simulated_model_ms": 1033.4}
-{"trace_id": "trc-fa0aa5d4d223", "span": "guard.output", "start": 1794968794.7674024, "kind": "guard", "violations": [], "dur_ms": 0.028}
-{"trace_id": "trc-fa0aa5d4d223", "span": "door.write_ticket", "start": 1794968794.7674818, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.014}
-{"trace_id": "trc-fa0aa5d4d223", "span": "claim.run", "start": 1794968794.7669253, "kind": "request", "claim_id": "CLM-2024-2822", "user": "david", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_DENY", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003113, "simulated_total_model_ms": 2287.6, "input_tokens": 2773, "output_tokens": 68, "dur_ms": 0.595}
-{"trace_id": "trc-ec5a5991759a", "span": "door.bundle", "start": 1794968794.7678628, "kind": "tool", "dur_ms": 0.026}
-{"trace_id": "trc-ec5a5991759a", "span": "guard.input", "start": 1794968794.7679489, "kind": "guard", "quarantined": [], "dur_ms": 0.003}
-{"trace_id": "trc-ec5a5991759a", "span": "agent.triage", "start": 1794968794.7680237, "kind": "model", "input_tokens": 693, "output_tokens": 12, "dur_ms": 0.051, "simulated_model_ms": 512.7}
-{"trace_id": "trc-ec5a5991759a", "span": "rules.facts", "start": 1794968794.7681098, "kind": "code", "dur_ms": 0.014}
-{"trace_id": "trc-ec5a5991759a", "span": "agent.evidence", "start": 1794968794.768146, "kind": "model", "input_tokens": 693, "output_tokens": 6, "dur_ms": 0.022, "simulated_model_ms": 313.2}
-{"trace_id": "trc-ec5a5991759a", "span": "retrieval.search", "start": 1794968794.768192, "kind": "tool", "retrieved": ["CLS-INJ-008", "CLS-DOC-009", "CLS-TL-005", "CLS-PAY-012", "CLS-COLL-001", "CLS-FRD-007"], "dur_ms": 0.072}
-{"trace_id": "trc-ec5a5991759a", "span": "agent.decide", "start": 1794968794.7683063, "kind": "model", "input_tokens": 1497, "output_tokens": 109, "dur_ms": 0.044, "simulated_model_ms": 388.4}
-{"trace_id": "trc-ec5a5991759a", "span": "guard.output", "start": 1794968794.7683897, "kind": "guard", "violations": [], "dur_ms": 0.04}
-{"trace_id": "trc-ec5a5991759a", "span": "door.write_ticket", "start": 1794968794.7684853, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.017}
-{"trace_id": "trc-ec5a5991759a", "span": "claim.run", "start": 1794968794.767859, "kind": "request", "claim_id": "CLM-2024-3187", "user": "eve", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "ESCALATE_HUMAN", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003518, "simulated_total_model_ms": 1214.3, "input_tokens": 2883, "output_tokens": 127, "dur_ms": 0.669}
-{"trace_id": "trc-74cc98c0b3b1", "span": "door.bundle", "start": 1794968794.768843, "kind": "tool", "dur_ms": 0.02}
-{"trace_id": "trc-74cc98c0b3b1", "span": "guard.input", "start": 1794968794.7688882, "kind": "guard", "quarantined": [], "dur_ms": 0.003}
-{"trace_id": "trc-74cc98c0b3b1", "span": "agent.triage", "start": 1794968794.7689245, "kind": "model", "input_tokens": 706, "output_tokens": 13, "dur_ms": 0.048, "simulated_model_ms": 830.4}
-{"trace_id": "trc-74cc98c0b3b1", "span": "rules.facts", "start": 1794968794.76904, "kind": "code", "dur_ms": 0.016}
-{"trace_id": "trc-74cc98c0b3b1", "span": "agent.evidence", "start": 1794968794.7690794, "kind": "model", "input_tokens": 706, "output_tokens": 6, "dur_ms": 0.023, "simulated_model_ms": 728.1}
-{"trace_id": "trc-74cc98c0b3b1", "span": "retrieval.search", "start": 1794968794.7692032, "kind": "tool", "retrieved": ["CLS-PER-006", "CLS-LIAB-003", "CLS-PAY-012", "CLS-DED-004", "CLS-EXC-010", "CLS-COMP-002"], "dur_ms": 0.063}
-{"trace_id": "trc-74cc98c0b3b1", "span": "agent.decide", "start": 1794968794.7693074, "kind": "model", "input_tokens": 1477, "output_tokens": 50, "dur_ms": 0.038, "simulated_model_ms": 456.2}
-{"trace_id": "trc-74cc98c0b3b1", "span": "guard.output", "start": 1794968794.7693856, "kind": "guard", "violations": [], "dur_ms": 0.028}
-{"trace_id": "trc-74cc98c0b3b1", "span": "door.write_ticket", "start": 1794968794.7694674, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.014}
-{"trace_id": "trc-74cc98c0b3b1", "span": "claim.run", "start": 1794968794.7688394, "kind": "request", "claim_id": "CLM-2025-1010", "user": "david", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_DENY", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003234, "simulated_total_model_ms": 2014.7, "input_tokens": 2889, "output_tokens": 69, "dur_ms": 0.668}
-{"trace_id": "trc-156950417266", "span": "door.bundle", "start": 1794968794.7698267, "kind": "tool", "dur_ms": 0.019}
-{"trace_id": "trc-156950417266", "span": "guard.input", "start": 1794968794.7698717, "kind": "guard", "quarantined": [], "dur_ms": 0.003}
-{"trace_id": "trc-156950417266", "span": "agent.triage", "start": 1794968794.7699063, "kind": "model", "input_tokens": 700, "output_tokens": 13, "dur_ms": 0.043, "simulated_model_ms": 892.8}
-{"trace_id": "trc-156950417266", "span": "rules.facts", "start": 1794968794.7700145, "kind": "code", "dur_ms": 0.016}
-{"trace_id": "trc-156950417266", "span": "agent.evidence", "start": 1794968794.770063, "kind": "model", "input_tokens": 700, "output_tokens": 6, "dur_ms": 0.023, "simulated_model_ms": 495.2}
-{"trace_id": "trc-156950417266", "span": "retrieval.search", "start": 1794968794.7701151, "kind": "tool", "retrieved": ["CLS-PAY-012", "CLS-COMP-002", "CLS-DED-004", "CLS-DOC-009", "CLS-TL-005", "CLS-INJ-008"], "dur_ms": 0.041}
-{"trace_id": "trc-156950417266", "span": "agent.decide", "start": 1794968794.7701945, "kind": "model", "input_tokens": 1442, "output_tokens": 76, "dur_ms": 0.038, "simulated_model_ms": 664.8}
-{"trace_id": "trc-156950417266", "span": "guard.output", "start": 1794968794.7702718, "kind": "guard", "violations": [], "dur_ms": 0.035}
-{"trace_id": "trc-156950417266", "span": "door.write_ticket", "start": 1794968794.77036, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.014}
-{"trace_id": "trc-156950417266", "span": "claim.run", "start": 1794968794.7698238, "kind": "request", "claim_id": "CLM-2025-1089", "user": "alice", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_APPROVE", "verdict_source": "model", "guard_violations": 0, "peril_source": "model", "cost_usd": 0.003317, "simulated_total_model_ms": 2052.8, "input_tokens": 2842, "output_tokens": 95, "dur_ms": 0.576}
-{"trace_id": "trc-75a77b7b4f32", "span": "door.bundle", "start": 1794968794.770706, "kind": "tool", "dur_ms": 0.02}
-{"trace_id": "trc-75a77b7b4f32", "span": "guard.input", "start": 1794968794.770753, "kind": "guard", "quarantined": [], "dur_ms": 0.003}
-{"trace_id": "trc-75a77b7b4f32", "span": "agent.triage", "start": 1794968794.7707875, "kind": "model", "input_tokens": 708, "output_tokens": 13, "dur_ms": 0.038, "simulated_model_ms": 1489.3}
-{"trace_id": "trc-75a77b7b4f32", "span": "rules.facts", "start": 1794968794.7708526, "kind": "code", "dur_ms": 0.013}
-{"trace_id": "trc-75a77b7b4f32", "span": "agent.evidence", "start": 1794968794.7708876, "kind": "model", "input_tokens": 708, "output_tokens": 6, "dur_ms": 0.02, "simulated_model_ms": 440.0}
-{"trace_id": "trc-75a77b7b4f32", "span": "retrieval.search", "start": 1794968794.7709477, "kind": "tool", "retrieved": ["CLS-PAY-012", "CLS-COMP-002", "CLS-LIAB-003", "CLS-DED-004", "CLS-TL-005", "CLS-EXC-010"], "dur_ms": 0.08}
-{"trace_id": "trc-75a77b7b4f32", "span": "agent.decide", "start": 1794968794.7710822, "kind": "model", "input_tokens": 1472, "output_tokens": 76, "dur_ms": 0.039, "simulated_model_ms": 818.0}
-{"trace_id": "trc-75a77b7b4f32", "span": "guard.output", "start": 1794968794.771165, "kind": "guard", "violations": [], "dur_ms": 0.035}
-{"trace_id": "trc-75a77b7b4f32", "span": "door.write_ticket", "start": 1794968794.7712522, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.014}
-{"trace_id": "trc-75a77b7b4f32", "span": "claim.run", "start": 1794968794.7707028, "kind": "request", "claim_id": "CLM-2025-1095", "user": "alice", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_APPROVE", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003363, "simulated_total_model_ms": 2747.3, "input_tokens": 2888, "output_tokens": 95, "dur_ms": 0.589}
-{"trace_id": "trc-7c96b3da2822", "span": "door.bundle", "start": 1794968794.7716012, "kind": "tool", "dur_ms": 0.02}
-{"trace_id": "trc-7c96b3da2822", "span": "guard.input", "start": 1794968794.7716475, "kind": "guard", "quarantined": ["DOC-00012"], "dur_ms": 0.023}
-{"trace_id": "trc-7c96b3da2822", "span": "agent.triage", "start": 1794968794.7717063, "kind": "model", "input_tokens": 755, "output_tokens": 13, "dur_ms": 0.036, "simulated_model_ms": 897.7}
-{"trace_id": "trc-7c96b3da2822", "span": "rules.facts", "start": 1794968794.7717712, "kind": "code", "dur_ms": 0.014}
-{"trace_id": "trc-7c96b3da2822", "span": "agent.evidence", "start": 1794968794.7718081, "kind": "model", "input_tokens": 755, "output_tokens": 6, "dur_ms": 0.026, "simulated_model_ms": 539.6}
-{"trace_id": "trc-7c96b3da2822", "span": "retrieval.search", "start": 1794968794.7718604, "kind": "tool", "retrieved": ["CLS-LIAB-003", "CLS-DOC-009", "CLS-PAY-012", "CLS-DED-004", "CLS-COMP-002", "CLS-TL-005"], "dur_ms": 0.056}
-{"trace_id": "trc-7c96b3da2822", "span": "agent.decide", "start": 1794968794.7719634, "kind": "model", "input_tokens": 1531, "output_tokens": 64, "dur_ms": 0.071, "simulated_model_ms": 413.8}
-{"trace_id": "trc-7c96b3da2822", "span": "guard.output", "start": 1794968794.7720788, "kind": "guard", "violations": [], "dur_ms": 0.032}
-{"trace_id": "trc-7c96b3da2822", "span": "door.write_ticket", "start": 1794968794.7721632, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.015}
-{"trace_id": "trc-7c96b3da2822", "span": "claim.run", "start": 1794968794.7715979, "kind": "request", "claim_id": "CLM-2024-2019", "user": "david", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_DENY", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003456, "simulated_total_model_ms": 1851.1, "input_tokens": 3041, "output_tokens": 83, "dur_ms": 0.61}
-{"trace_id": "trc-e99d8784698b", "span": "door.bundle", "start": 1794968794.7725163, "kind": "tool", "dur_ms": 0.02}
-{"trace_id": "trc-e99d8784698b", "span": "guard.input", "start": 1794968794.772565, "kind": "guard", "quarantined": [], "dur_ms": 0.033}
-{"trace_id": "trc-e99d8784698b", "span": "agent.triage", "start": 1794968794.7726321, "kind": "model", "input_tokens": 790, "output_tokens": 12, "dur_ms": 0.035, "simulated_model_ms": 1129.4}
-{"trace_id": "trc-e99d8784698b", "span": "rules.facts", "start": 1794968794.7726953, "kind": "code", "dur_ms": 0.014}
-{"trace_id": "trc-e99d8784698b", "span": "agent.evidence", "start": 1794968794.7727294, "kind": "model", "input_tokens": 790, "output_tokens": 6, "dur_ms": 0.025, "simulated_model_ms": 1067.9}
-{"trace_id": "trc-e99d8784698b", "span": "retrieval.search", "start": 1794968794.7727776, "kind": "tool", "retrieved": ["CLS-COLL-001", "CLS-PAY-012", "CLS-COMP-002", "CLS-DOC-009", "CLS-DED-004", "CLS-EXC-010"], "dur_ms": 0.044}
-{"trace_id": "trc-e99d8784698b", "span": "agent.decide", "start": 1794968794.772852, "kind": "model", "input_tokens": 1554, "output_tokens": 89, "dur_ms": 0.052, "simulated_model_ms": 1015.1}
-{"trace_id": "trc-e99d8784698b", "span": "guard.output", "start": 1794968794.7729578, "kind": "guard", "violations": ["leakage: output references another record (CLM-2024-2019)"], "dur_ms": 0.063}
-{"trace_id": "trc-e99d8784698b", "span": "door.write_ticket", "start": 1794968794.7747014, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.022}
-{"trace_id": "trc-e99d8784698b", "span": "claim.run", "start": 1794968794.7725136, "kind": "request", "claim_id": "CLM-2024-1800", "user": "alice", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "ESCALATE_HUMAN", "verdict_source": "deterministic_fallback", "guard_violations": 1, "peril_source": "table", "cost_usd": 0.003669, "simulated_total_model_ms": 3212.4, "input_tokens": 3134, "output_tokens": 107, "dur_ms": 2.291}
-{"trace_id": "trc-2b5a86b9bfde", "span": "door.bundle", "start": 1794968794.7752128, "kind": "tool", "dur_ms": 0.024}
-{"trace_id": "trc-2b5a86b9bfde", "span": "guard.input", "start": 1794968794.775278, "kind": "guard", "quarantined": ["request_note"], "dur_ms": 0.018}
-{"trace_id": "trc-2b5a86b9bfde", "span": "agent.triage", "start": 1794968794.7753332, "kind": "model", "input_tokens": 677, "output_tokens": 12, "dur_ms": 0.035, "simulated_model_ms": 784.1}
-{"trace_id": "trc-2b5a86b9bfde", "span": "rules.facts", "start": 1794968794.775401, "kind": "code", "dur_ms": 0.015}
-{"trace_id": "trc-2b5a86b9bfde", "span": "agent.evidence", "start": 1794968794.775438, "kind": "model", "input_tokens": 677, "output_tokens": 6, "dur_ms": 0.021, "simulated_model_ms": 659.5}
-{"trace_id": "trc-2b5a86b9bfde", "span": "retrieval.search", "start": 1794968794.775489, "kind": "tool", "retrieved": ["CLS-PER-006", "CLS-DOC-009", "CLS-PAY-012", "CLS-DED-004", "CLS-COLL-001", "CLS-INJ-008"], "dur_ms": 0.056}
-{"trace_id": "trc-2b5a86b9bfde", "span": "agent.decide", "start": 1794968794.775581, "kind": "model", "input_tokens": 1448, "output_tokens": 50, "dur_ms": 0.037, "simulated_model_ms": 990.8}
-{"trace_id": "trc-2b5a86b9bfde", "span": "guard.output", "start": 1794968794.7756598, "kind": "guard", "violations": [], "dur_ms": 0.028}
-{"trace_id": "trc-2b5a86b9bfde", "span": "door.write_ticket", "start": 1794968794.7757397, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.015}
-{"trace_id": "trc-2b5a86b9bfde", "span": "claim.run", "start": 1794968794.775209, "kind": "request", "claim_id": "CLM-2024-2530", "user": "david", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_DENY", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003142, "simulated_total_model_ms": 2434.4, "input_tokens": 2802, "output_tokens": 68, "dur_ms": 0.57}
+{"trace_id": "trc-f34a66222026", "span": "door.bundle", "start": 1794969195.9852297, "kind": "tool", "dur_ms": 0.054}
+{"trace_id": "trc-f34a66222026", "span": "guard.input", "start": 1794969195.9854293, "kind": "guard", "quarantined": [], "dur_ms": 0.006}
+{"trace_id": "trc-f34a66222026", "span": "agent.triage", "start": 1794969195.9855058, "kind": "model", "input_tokens": 750, "output_tokens": 12, "dur_ms": 0.313, "simulated_model_ms": 596.4}
+{"trace_id": "trc-f34a66222026", "span": "rules.facts", "start": 1794969195.985867, "kind": "code", "dur_ms": 0.026}
+{"trace_id": "trc-f34a66222026", "span": "agent.evidence", "start": 1794969195.9859204, "kind": "model", "input_tokens": 750, "output_tokens": 6, "dur_ms": 0.212, "simulated_model_ms": 793.7}
+{"trace_id": "trc-f34a66222026", "span": "retrieval.search", "start": 1794969195.9861722, "kind": "tool", "retrieved": ["CLS-COLL-001", "CLS-PAY-012", "CLS-COMP-002", "CLS-DOC-009", "CLS-DED-004", "CLS-EXC-010"], "dur_ms": 0.061}
+{"trace_id": "trc-f34a66222026", "span": "agent.decide", "start": 1794969195.9862742, "kind": "model", "input_tokens": 1514, "output_tokens": 75, "dur_ms": 0.171, "simulated_model_ms": 731.2}
+{"trace_id": "trc-f34a66222026", "span": "guard.output", "start": 1794969195.9865012, "kind": "guard", "violations": [], "dur_ms": 0.046}
+{"trace_id": "trc-f34a66222026", "span": "door.write_ticket", "start": 1794969195.9866245, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.021}
+{"trace_id": "trc-f34a66222026", "span": "claim.run", "start": 1794969195.9852154, "kind": "request", "claim_id": "CLM-2024-1800", "user": "alice", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_APPROVE", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003479, "simulated_total_model_ms": 2121.3, "input_tokens": 3014, "output_tokens": 93, "dur_ms": 1.454}
+{"trace_id": "trc-8dfad071b4a7", "span": "door.bundle", "start": 1794969195.987126, "kind": "tool", "dur_ms": 0.035}
+{"trace_id": "trc-8dfad071b4a7", "span": "guard.input", "start": 1794969195.9872, "kind": "guard", "quarantined": [], "dur_ms": 0.004}
+{"trace_id": "trc-8dfad071b4a7", "span": "agent.triage", "start": 1794969195.9872422, "kind": "model", "input_tokens": 757, "output_tokens": 12, "dur_ms": 0.046, "simulated_model_ms": 350.1}
+{"trace_id": "trc-8dfad071b4a7", "span": "rules.facts", "start": 1794969195.9873204, "kind": "code", "dur_ms": 0.019}
+{"trace_id": "trc-8dfad071b4a7", "span": "agent.evidence", "start": 1794969195.9873614, "kind": "model", "input_tokens": 757, "output_tokens": 38, "dur_ms": 0.026, "simulated_model_ms": 372.7}
+{"trace_id": "trc-8dfad071b4a7", "span": "retrieval.search", "start": 1794969195.987419, "kind": "tool", "retrieved": ["CLS-FRD-007", "CLS-INJ-008", "CLS-DOC-009", "CLS-PAY-012", "CLS-COLL-001", "CLS-LIAB-003"], "dur_ms": 0.074}
+{"trace_id": "trc-8dfad071b4a7", "span": "agent.decide", "start": 1794969195.9875293, "kind": "model", "input_tokens": 1587, "output_tokens": 110, "dur_ms": 0.042, "simulated_model_ms": 500.0}
+{"trace_id": "trc-8dfad071b4a7", "span": "guard.output", "start": 1794969195.9876127, "kind": "guard", "violations": [], "dur_ms": 0.05}
+{"trace_id": "trc-8dfad071b4a7", "span": "door.write_ticket", "start": 1794969195.9877174, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.019}
+{"trace_id": "trc-8dfad071b4a7", "span": "claim.run", "start": 1794969195.9871206, "kind": "request", "claim_id": "CLM-2024-1873", "user": "carol", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "REFER_SIU", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003901, "simulated_total_model_ms": 1222.8, "input_tokens": 3101, "output_tokens": 160, "dur_ms": 0.641}
+{"trace_id": "trc-01d29d15ddd5", "span": "door.bundle", "start": 1794969195.9881215, "kind": "tool", "dur_ms": 0.02}
+{"trace_id": "trc-01d29d15ddd5", "span": "guard.input", "start": 1794969195.9881735, "kind": "guard", "quarantined": [], "dur_ms": 0.003}
+{"trace_id": "trc-01d29d15ddd5", "span": "agent.triage", "start": 1794969195.9882114, "kind": "model", "input_tokens": 664, "output_tokens": 12, "dur_ms": 0.033, "simulated_model_ms": 481.6}
+{"trace_id": "trc-01d29d15ddd5", "span": "rules.facts", "start": 1794969195.9882798, "kind": "code", "dur_ms": 0.014}
+{"trace_id": "trc-01d29d15ddd5", "span": "agent.evidence", "start": 1794969195.988315, "kind": "model", "input_tokens": 664, "output_tokens": 6, "dur_ms": 0.02, "simulated_model_ms": 772.6}
+{"trace_id": "trc-01d29d15ddd5", "span": "retrieval.search", "start": 1794969195.9883597, "kind": "tool", "retrieved": ["CLS-PER-006", "CLS-DOC-009", "CLS-PAY-012", "CLS-COMP-002", "CLS-DED-004", "CLS-LIAB-003"], "dur_ms": 0.054}
+{"trace_id": "trc-01d29d15ddd5", "span": "agent.decide", "start": 1794969195.9884486, "kind": "model", "input_tokens": 1445, "output_tokens": 50, "dur_ms": 0.037, "simulated_model_ms": 1033.4}
+{"trace_id": "trc-01d29d15ddd5", "span": "guard.output", "start": 1794969195.9885304, "kind": "guard", "violations": [], "dur_ms": 0.028}
+{"trace_id": "trc-01d29d15ddd5", "span": "door.write_ticket", "start": 1794969195.9886117, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.015}
+{"trace_id": "trc-01d29d15ddd5", "span": "claim.run", "start": 1794969195.9881182, "kind": "request", "claim_id": "CLM-2024-2822", "user": "david", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_DENY", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003113, "simulated_total_model_ms": 2287.6, "input_tokens": 2773, "output_tokens": 68, "dur_ms": 0.533}
+{"trace_id": "trc-b34804d8bb4c", "span": "door.bundle", "start": 1794969195.9889882, "kind": "tool", "dur_ms": 0.024}
+{"trace_id": "trc-b34804d8bb4c", "span": "guard.input", "start": 1794969195.9890456, "kind": "guard", "quarantined": [], "dur_ms": 0.003}
+{"trace_id": "trc-b34804d8bb4c", "span": "agent.triage", "start": 1794969195.9890838, "kind": "model", "input_tokens": 693, "output_tokens": 12, "dur_ms": 0.05, "simulated_model_ms": 512.7}
+{"trace_id": "trc-b34804d8bb4c", "span": "rules.facts", "start": 1794969195.9892004, "kind": "code", "dur_ms": 0.014}
+{"trace_id": "trc-b34804d8bb4c", "span": "agent.evidence", "start": 1794969195.9892414, "kind": "model", "input_tokens": 693, "output_tokens": 6, "dur_ms": 0.026, "simulated_model_ms": 313.2}
+{"trace_id": "trc-b34804d8bb4c", "span": "retrieval.search", "start": 1794969195.9892929, "kind": "tool", "retrieved": ["CLS-INJ-008", "CLS-DOC-009", "CLS-TL-005", "CLS-PAY-012", "CLS-COLL-001", "CLS-FRD-007"], "dur_ms": 0.066}
+{"trace_id": "trc-b34804d8bb4c", "span": "agent.decide", "start": 1794969195.9893923, "kind": "model", "input_tokens": 1497, "output_tokens": 109, "dur_ms": 0.042, "simulated_model_ms": 388.4}
+{"trace_id": "trc-b34804d8bb4c", "span": "guard.output", "start": 1794969195.9894774, "kind": "guard", "violations": [], "dur_ms": 0.04}
+{"trace_id": "trc-b34804d8bb4c", "span": "door.write_ticket", "start": 1794969195.989567, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.016}
+{"trace_id": "trc-b34804d8bb4c", "span": "claim.run", "start": 1794969195.9889843, "kind": "request", "claim_id": "CLM-2024-3187", "user": "eve", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "ESCALATE_HUMAN", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003518, "simulated_total_model_ms": 1214.3, "input_tokens": 2883, "output_tokens": 127, "dur_ms": 0.627}
+{"trace_id": "trc-18cc7eac619e", "span": "door.bundle", "start": 1794969195.9907017, "kind": "tool", "dur_ms": 0.025}
+{"trace_id": "trc-18cc7eac619e", "span": "guard.input", "start": 1794969195.9907925, "kind": "guard", "quarantined": [], "dur_ms": 0.005}
+{"trace_id": "trc-18cc7eac619e", "span": "agent.triage", "start": 1794969195.9908376, "kind": "model", "input_tokens": 706, "output_tokens": 13, "dur_ms": 0.041, "simulated_model_ms": 830.4}
+{"trace_id": "trc-18cc7eac619e", "span": "rules.facts", "start": 1794969195.990909, "kind": "code", "dur_ms": 0.018}
+{"trace_id": "trc-18cc7eac619e", "span": "agent.evidence", "start": 1794969195.9910064, "kind": "model", "input_tokens": 706, "output_tokens": 6, "dur_ms": 0.032, "simulated_model_ms": 728.1}
+{"trace_id": "trc-18cc7eac619e", "span": "retrieval.search", "start": 1794969195.991083, "kind": "tool", "retrieved": ["CLS-PER-006", "CLS-LIAB-003", "CLS-PAY-012", "CLS-DED-004", "CLS-EXC-010", "CLS-COMP-002"], "dur_ms": 0.06}
+{"trace_id": "trc-18cc7eac619e", "span": "agent.decide", "start": 1794969195.9911792, "kind": "model", "input_tokens": 1477, "output_tokens": 50, "dur_ms": 0.037, "simulated_model_ms": 456.2}
+{"trace_id": "trc-18cc7eac619e", "span": "guard.output", "start": 1794969195.9912565, "kind": "guard", "violations": [], "dur_ms": 0.03}
+{"trace_id": "trc-18cc7eac619e", "span": "door.write_ticket", "start": 1794969195.9913423, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.017}
+{"trace_id": "trc-18cc7eac619e", "span": "claim.run", "start": 1794969195.9906971, "kind": "request", "claim_id": "CLM-2025-1010", "user": "david", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_DENY", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003234, "simulated_total_model_ms": 2014.7, "input_tokens": 2889, "output_tokens": 69, "dur_ms": 0.688}
+{"trace_id": "trc-ea41a9365a91", "span": "door.bundle", "start": 1794969195.991709, "kind": "tool", "dur_ms": 0.022}
+{"trace_id": "trc-ea41a9365a91", "span": "guard.input", "start": 1794969195.991757, "kind": "guard", "quarantined": [], "dur_ms": 0.004}
+{"trace_id": "trc-ea41a9365a91", "span": "agent.triage", "start": 1794969195.9917924, "kind": "model", "input_tokens": 700, "output_tokens": 13, "dur_ms": 0.035, "simulated_model_ms": 892.8}
+{"trace_id": "trc-ea41a9365a91", "span": "rules.facts", "start": 1794969195.9918568, "kind": "code", "dur_ms": 0.014}
+{"trace_id": "trc-ea41a9365a91", "span": "agent.evidence", "start": 1794969195.9918907, "kind": "model", "input_tokens": 700, "output_tokens": 6, "dur_ms": 0.02, "simulated_model_ms": 495.2}
+{"trace_id": "trc-ea41a9365a91", "span": "retrieval.search", "start": 1794969195.9919345, "kind": "tool", "retrieved": ["CLS-PAY-012", "CLS-COMP-002", "CLS-DED-004", "CLS-DOC-009", "CLS-TL-005", "CLS-INJ-008"], "dur_ms": 0.085}
+{"trace_id": "trc-ea41a9365a91", "span": "agent.decide", "start": 1794969195.9920652, "kind": "model", "input_tokens": 1442, "output_tokens": 76, "dur_ms": 0.041, "simulated_model_ms": 664.8}
+{"trace_id": "trc-ea41a9365a91", "span": "guard.output", "start": 1794969195.9921465, "kind": "guard", "violations": [], "dur_ms": 0.036}
+{"trace_id": "trc-ea41a9365a91", "span": "door.write_ticket", "start": 1794969195.9922333, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.015}
+{"trace_id": "trc-ea41a9365a91", "span": "claim.run", "start": 1794969195.9917054, "kind": "request", "claim_id": "CLM-2025-1089", "user": "alice", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_APPROVE", "verdict_source": "model", "guard_violations": 0, "peril_source": "model", "cost_usd": 0.003317, "simulated_total_model_ms": 2052.8, "input_tokens": 2842, "output_tokens": 95, "dur_ms": 0.568}
+{"trace_id": "trc-88b4edc46003", "span": "door.bundle", "start": 1794969195.9925768, "kind": "tool", "dur_ms": 0.019}
+{"trace_id": "trc-88b4edc46003", "span": "guard.input", "start": 1794969195.9926217, "kind": "guard", "quarantined": [], "dur_ms": 0.003}
+{"trace_id": "trc-88b4edc46003", "span": "agent.triage", "start": 1794969195.9926574, "kind": "model", "input_tokens": 708, "output_tokens": 13, "dur_ms": 0.039, "simulated_model_ms": 1489.3}
+{"trace_id": "trc-88b4edc46003", "span": "rules.facts", "start": 1794969195.9927227, "kind": "code", "dur_ms": 0.012}
+{"trace_id": "trc-88b4edc46003", "span": "agent.evidence", "start": 1794969195.9927554, "kind": "model", "input_tokens": 708, "output_tokens": 6, "dur_ms": 0.021, "simulated_model_ms": 440.0}
+{"trace_id": "trc-88b4edc46003", "span": "retrieval.search", "start": 1794969195.9928007, "kind": "tool", "retrieved": ["CLS-PAY-012", "CLS-COMP-002", "CLS-LIAB-003", "CLS-DED-004", "CLS-TL-005", "CLS-EXC-010"], "dur_ms": 0.047}
+{"trace_id": "trc-88b4edc46003", "span": "agent.decide", "start": 1794969195.992884, "kind": "model", "input_tokens": 1472, "output_tokens": 76, "dur_ms": 0.036, "simulated_model_ms": 818.0}
+{"trace_id": "trc-88b4edc46003", "span": "guard.output", "start": 1794969195.992998, "kind": "guard", "violations": [], "dur_ms": 0.034}
+{"trace_id": "trc-88b4edc46003", "span": "door.write_ticket", "start": 1794969195.9930902, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.016}
+{"trace_id": "trc-88b4edc46003", "span": "claim.run", "start": 1794969195.9925737, "kind": "request", "claim_id": "CLM-2025-1095", "user": "alice", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_APPROVE", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003363, "simulated_total_model_ms": 2747.3, "input_tokens": 2888, "output_tokens": 95, "dur_ms": 0.558}
+{"trace_id": "trc-95f81b4f1f69", "span": "door.bundle", "start": 1794969195.9934816, "kind": "tool", "dur_ms": 0.025}
+{"trace_id": "trc-95f81b4f1f69", "span": "guard.input", "start": 1794969195.9936326, "kind": "guard", "quarantined": ["DOC-00012"], "dur_ms": 0.024}
+{"trace_id": "trc-95f81b4f1f69", "span": "agent.triage", "start": 1794969195.9937031, "kind": "model", "input_tokens": 755, "output_tokens": 13, "dur_ms": 0.048, "simulated_model_ms": 897.7}
+{"trace_id": "trc-95f81b4f1f69", "span": "rules.facts", "start": 1794969195.9940877, "kind": "code", "dur_ms": 0.024}
+{"trace_id": "trc-95f81b4f1f69", "span": "agent.evidence", "start": 1794969195.9941523, "kind": "model", "input_tokens": 755, "output_tokens": 6, "dur_ms": 0.037, "simulated_model_ms": 539.6}
+{"trace_id": "trc-95f81b4f1f69", "span": "retrieval.search", "start": 1794969195.994221, "kind": "tool", "retrieved": ["CLS-LIAB-003", "CLS-DOC-009", "CLS-PAY-012", "CLS-DED-004", "CLS-COMP-002", "CLS-TL-005"], "dur_ms": 0.061}
+{"trace_id": "trc-95f81b4f1f69", "span": "agent.decide", "start": 1794969195.9943182, "kind": "model", "input_tokens": 1531, "output_tokens": 64, "dur_ms": 0.061, "simulated_model_ms": 413.8}
+{"trace_id": "trc-95f81b4f1f69", "span": "guard.output", "start": 1794969195.9944255, "kind": "guard", "violations": [], "dur_ms": 0.036}
+{"trace_id": "trc-95f81b4f1f69", "span": "door.write_ticket", "start": 1794969195.9945178, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.018}
+{"trace_id": "trc-95f81b4f1f69", "span": "claim.run", "start": 1794969195.9934776, "kind": "request", "claim_id": "CLM-2024-2019", "user": "david", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_DENY", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003456, "simulated_total_model_ms": 1851.1, "input_tokens": 3041, "output_tokens": 83, "dur_ms": 1.092}
+{"trace_id": "trc-cbf4c4a9f3da", "span": "door.bundle", "start": 1794969195.9949079, "kind": "tool", "dur_ms": 0.023}
+{"trace_id": "trc-cbf4c4a9f3da", "span": "guard.input", "start": 1794969195.9950242, "kind": "guard", "quarantined": [], "dur_ms": 0.035}
+{"trace_id": "trc-cbf4c4a9f3da", "span": "agent.triage", "start": 1794969195.9951031, "kind": "model", "input_tokens": 790, "output_tokens": 12, "dur_ms": 0.039, "simulated_model_ms": 1129.4}
+{"trace_id": "trc-cbf4c4a9f3da", "span": "rules.facts", "start": 1794969195.9951718, "kind": "code", "dur_ms": 0.017}
+{"trace_id": "trc-cbf4c4a9f3da", "span": "agent.evidence", "start": 1794969195.9952102, "kind": "model", "input_tokens": 790, "output_tokens": 6, "dur_ms": 0.028, "simulated_model_ms": 1067.9}
+{"trace_id": "trc-cbf4c4a9f3da", "span": "retrieval.search", "start": 1794969195.995262, "kind": "tool", "retrieved": ["CLS-COLL-001", "CLS-PAY-012", "CLS-COMP-002", "CLS-DOC-009", "CLS-DED-004", "CLS-EXC-010"], "dur_ms": 0.048}
+{"trace_id": "trc-cbf4c4a9f3da", "span": "agent.decide", "start": 1794969195.99534, "kind": "model", "input_tokens": 1554, "output_tokens": 89, "dur_ms": 0.055, "simulated_model_ms": 1015.1}
+{"trace_id": "trc-cbf4c4a9f3da", "span": "guard.output", "start": 1794969195.9954376, "kind": "guard", "violations": ["leakage: output references another record (CLM-2024-2019)"], "dur_ms": 0.04}
+{"trace_id": "trc-cbf4c4a9f3da", "span": "door.write_ticket", "start": 1794969195.9969385, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.047}
+{"trace_id": "trc-cbf4c4a9f3da", "span": "claim.run", "start": 1794969195.9949045, "kind": "request", "claim_id": "CLM-2024-1800", "user": "alice", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "ESCALATE_HUMAN", "verdict_source": "deterministic_fallback", "guard_violations": 1, "peril_source": "table", "cost_usd": 0.003669, "simulated_total_model_ms": 3212.4, "input_tokens": 3134, "output_tokens": 107, "dur_ms": 2.128}
+{"trace_id": "trc-9c8ed8b0a1ff", "span": "door.bundle", "start": 1794969195.9974308, "kind": "tool", "dur_ms": 0.024}
+{"trace_id": "trc-9c8ed8b0a1ff", "span": "guard.input", "start": 1794969195.99749, "kind": "guard", "quarantined": ["request_note"], "dur_ms": 0.016}
+{"trace_id": "trc-9c8ed8b0a1ff", "span": "agent.triage", "start": 1794969195.9975417, "kind": "model", "input_tokens": 677, "output_tokens": 12, "dur_ms": 0.033, "simulated_model_ms": 784.1}
+{"trace_id": "trc-9c8ed8b0a1ff", "span": "rules.facts", "start": 1794969195.9976068, "kind": "code", "dur_ms": 0.015}
+{"trace_id": "trc-9c8ed8b0a1ff", "span": "agent.evidence", "start": 1794969195.9976428, "kind": "model", "input_tokens": 677, "output_tokens": 6, "dur_ms": 0.021, "simulated_model_ms": 659.5}
+{"trace_id": "trc-9c8ed8b0a1ff", "span": "retrieval.search", "start": 1794969195.9976933, "kind": "tool", "retrieved": ["CLS-PER-006", "CLS-DOC-009", "CLS-PAY-012", "CLS-DED-004", "CLS-COLL-001", "CLS-INJ-008"], "dur_ms": 0.061}
+{"trace_id": "trc-9c8ed8b0a1ff", "span": "agent.decide", "start": 1794969195.997801, "kind": "model", "input_tokens": 1448, "output_tokens": 50, "dur_ms": 0.047, "simulated_model_ms": 990.8}
+{"trace_id": "trc-9c8ed8b0a1ff", "span": "guard.output", "start": 1794969195.997901, "kind": "guard", "violations": [], "dur_ms": 0.036}
+{"trace_id": "trc-9c8ed8b0a1ff", "span": "door.write_ticket", "start": 1794969195.9980414, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.017}
+{"trace_id": "trc-9c8ed8b0a1ff", "span": "claim.run", "start": 1794969195.997427, "kind": "request", "claim_id": "CLM-2024-2530", "user": "david", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_DENY", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.003142, "simulated_total_model_ms": 2434.4, "input_tokens": 2802, "output_tokens": 68, "dur_ms": 0.658}
