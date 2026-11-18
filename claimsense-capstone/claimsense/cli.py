@@ -7,6 +7,7 @@
   python3 -m claimsense user add --id frank --name "Frank Li" --group adjuster
   python3 -m claimsense corpus check
   python3 -m claimsense dashboard [--traces runs/traces/...jsonl] [--out ops/dashboard.html]
+  python3 -m claimsense serve [--port 8080]
 
 Exit codes: 0 ok · 1 gate failed / check failed · 2 usage or access error.
 """
@@ -194,6 +195,12 @@ def cmd_dashboard(a) -> int:
     return 0
 
 
+def cmd_serve(a) -> int:
+    from .server import serve
+    serve(a.host, a.port)
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="claimsense", description="ClaimSense operator CLI")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -246,6 +253,11 @@ def main(argv: list[str] | None = None) -> int:
     d.add_argument("--traces")
     d.add_argument("--out")
     d.set_defaults(fn=cmd_dashboard)
+
+    sv = sub.add_parser("serve", help="serve the portal and the /recommend API locally")
+    sv.add_argument("--host", default="127.0.0.1")
+    sv.add_argument("--port", type=int, default=8080)
+    sv.set_defaults(fn=cmd_serve)
 
     a = ap.parse_args(argv)
     return a.fn(a)

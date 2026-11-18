@@ -1,0 +1,9 @@
+runs
+tests
+ops
+deploy
+docs
+.env
+.env.*
+**/__pycache__
+.pytest_cache

@@ -1,0 +1,10 @@
+{"trace_id": "trc-92130448a934", "span": "door.bundle", "start": 1794968794.855946, "kind": "tool", "dur_ms": 0.084}
+{"trace_id": "trc-92130448a934", "span": "guard.input", "start": 1794968794.8561893, "kind": "guard", "quarantined": [], "dur_ms": 0.005}
+{"trace_id": "trc-92130448a934", "span": "agent.triage", "start": 1794968794.8562655, "kind": "model", "input_tokens": 706, "output_tokens": 12, "dur_ms": 0.335, "simulated_model_ms": 596.4}
+{"trace_id": "trc-92130448a934", "span": "rules.facts", "start": 1794968794.856649, "kind": "code", "dur_ms": 0.027}
+{"trace_id": "trc-92130448a934", "span": "agent.evidence", "start": 1794968794.8567042, "kind": "model", "input_tokens": 706, "output_tokens": 6, "dur_ms": 0.169, "simulated_model_ms": 793.7}
+{"trace_id": "trc-92130448a934", "span": "retrieval.search", "start": 1794968794.85692, "kind": "tool", "retrieved": ["CLS-LIAB-003", "CLS-PAY-012", "CLS-DED-004", "CLS-COMP-002", "CLS-INJ-008", "CLS-FRD-007"], "dur_ms": 0.102}
+{"trace_id": "trc-92130448a934", "span": "agent.decide", "start": 1794968794.8570726, "kind": "model", "input_tokens": 1478, "output_tokens": 64, "dur_ms": 0.203, "simulated_model_ms": 731.2}
+{"trace_id": "trc-92130448a934", "span": "guard.output", "start": 1794968794.8573406, "kind": "guard", "violations": [], "dur_ms": 0.045}
+{"trace_id": "trc-92130448a934", "span": "door.write_ticket", "start": 1794968794.8574734, "kind": "tool", "ticket_id": "TKT-000001", "dur_ms": 0.024}
+{"trace_id": "trc-92130448a934", "span": "claim.run", "start": 1794968794.8559313, "kind": "request", "claim_id": "CLM-2025-1025", "user": "alice", "release": "v1.0.0", "brain": "mock", "index": "full", "outcome": "RECOMMEND_DENY", "verdict_source": "model", "guard_violations": 0, "peril_source": "table", "cost_usd": 0.0033, "simulated_total_model_ms": 2121.3, "input_tokens": 2890, "output_tokens": 82, "dur_ms": 1.59}

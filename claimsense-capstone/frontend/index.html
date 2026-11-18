@@ -379,7 +379,7 @@ table.docs { table-layout: fixed; } table.docs td { overflow-wrap: anywhere; } t
   // ── live mode settings ────────────────────────────────────────────────────
   $("#apiUrl").value = api;
   $("#buildLine").textContent = `Portal data built ${D.built} from the real pipeline (mock brain, release ${D.release.version}, model pinned: ${D.release.model_id}).`;
-  $("#saveApi").onclick = async () => { const u = $("#apiUrl").value.trim(); if (!/^https:\/\//.test(u)) { $("#apiStatus").textContent = "Enter an https:// URL."; return; }
+  $("#saveApi").onclick = async () => { const u = $("#apiUrl").value.trim(); if (!/^(https:\/\/|http:\/\/(localhost|127\.0\.0\.1)(:\d+)?)/.test(u)) { $("#apiStatus").textContent = "Enter an https:// URL (or http://localhost for make up)."; return; }
     $("#apiStatus").textContent = "Checking /health…";
     try { const r = await fetch(u.replace(/\/$/, "") + "/health"); const b = await r.json();
       api = u; store.set("api", api); setMode(); renderDetail(); $("#apiStatus").textContent = `Connected: release ${b.release}, brain ${b.brain}.`;
