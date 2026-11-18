@@ -1,0 +1,142 @@
+{
+ "CLM-2024-1800": {
+  "alice": true,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-1873": {
+  "alice": false,
+  "david": false,
+  "bob": true,
+  "carol": true,
+  "eve": false
+ },
+ "CLM-2024-1946": {
+  "alice": false,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": true
+ },
+ "CLM-2024-2019": {
+  "alice": false,
+  "david": true,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2092": {
+  "alice": true,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2165": {
+  "alice": true,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2238": {
+  "alice": false,
+  "david": true,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2311": {
+  "alice": false,
+  "david": true,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2384": {
+  "alice": true,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2457": {
+  "alice": false,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": true
+ },
+ "CLM-2024-2530": {
+  "alice": false,
+  "david": true,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2603": {
+  "alice": false,
+  "david": false,
+  "bob": true,
+  "carol": true,
+  "eve": false
+ },
+ "CLM-2024-2676": {
+  "alice": false,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2749": {
+  "alice": true,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2822": {
+  "alice": false,
+  "david": true,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2895": {
+  "alice": false,
+  "david": true,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-2968": {
+  "alice": false,
+  "david": false,
+  "bob": true,
+  "carol": true,
+  "eve": false
+ },
+ "CLM-2024-3041": {
+  "alice": true,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": false
+ },
+ "CLM-2024-3114": {
+  "alice": false,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": true
+ },
+ "CLM-2024-3187": {
+  "alice": false,
+  "david": false,
+  "bob": true,
+  "carol": false,
+  "eve": true
+ }
+}

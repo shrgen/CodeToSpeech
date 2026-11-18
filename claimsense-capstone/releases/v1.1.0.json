@@ -1,0 +1,8 @@
+{
+  "version": "v1.1.0",
+  "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "index_exclude": ["CLS-LIAB-003", "CLS-PER-006"],
+  "top_k": 6,
+  "quarantine": true,
+  "notes": "INCIDENT DRILL release: a 'slimmed' retrieval index that drops the Liability Only and policy-period clauses. Used only by ops/incident_drill.py to stage a regression."
+}

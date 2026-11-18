@@ -1,0 +1,22 @@
+{
+ "alice": {
+  "group": "adjuster",
+  "name": "Alice Tran"
+ },
+ "david": {
+  "group": "adjuster",
+  "name": "David Okoro"
+ },
+ "bob": {
+  "group": "senior-adjuster",
+  "name": "Bob Reyes"
+ },
+ "carol": {
+  "group": "fraud-investigator",
+  "name": "Carol Dimas"
+ },
+ "eve": {
+  "group": "total-loss-appraiser",
+  "name": "Eve Lindqvist"
+ }
+}
