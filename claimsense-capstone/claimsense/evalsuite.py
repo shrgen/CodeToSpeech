@@ -29,7 +29,8 @@ from .retrieval import PolicyIndex, load_corpus
 from .trace import Tracer
 
 ROOT = Path(__file__).resolve().parent.parent
-SUITES = {"golden": ROOT / "evals" / "golden_set.json", "smoke": ROOT / "evals" / "smoke_set.json"}
+SUITES = {"golden": ROOT / "evals" / "golden_set.json", "smoke": ROOT / "evals" / "smoke_set.json",
+          "regression": ROOT / "evals" / "regression_set.json"}
 
 
 def load_suite(name_or_path: str) -> dict[str, Any]:

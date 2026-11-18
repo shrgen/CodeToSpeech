@@ -1,0 +1,110 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  ClaimSense observability: one CloudWatch dashboard (call volume, error rate, p95 latency)
+  and ONE alarm (error rate > 5% over 5 minutes). Reads the EMF metrics that
+  claimsense/service.py prints on every request (namespace ClaimSense, dimension Service).
+
+Parameters:
+  ServiceName:
+    Type: String
+    Default: claimsense
+  AlarmEmail:
+    Type: String
+    Default: ""
+    Description: Optional. If set, the alarm notifies this address (confirm the SNS email).
+
+Conditions:
+  HasEmail: !Not [!Equals [!Ref AlarmEmail, ""]]
+
+Resources:
+  AlarmTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: !Sub "${ServiceName}-alarms"
+
+  AlarmEmailSubscription:
+    Type: AWS::SNS::Subscription
+    Condition: HasEmail
+    Properties:
+      TopicArn: !Ref AlarmTopic
+      Protocol: email
+      Endpoint: !Ref AlarmEmail
+
+  # The one alarm: Errors / Requests over 5 minutes. An error = the request raised (5xx) or the
+  # verdict came from the deterministic fallback (model output rejected). 403 refusals are not errors.
+  ErrorRateAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub "${ServiceName}-error-rate-above-5pct"
+      AlarmDescription: >
+        ClaimSense error rate above 5% over 5 minutes. Runbook: docs/RUNBOOK.md
+        (Roll back a deployment). Check the dashboard, then `python3 -m claimsense release rollback`.
+      ComparisonOperator: GreaterThanThreshold
+      Threshold: 0.05
+      EvaluationPeriods: 1
+      DatapointsToAlarm: 1
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref AlarmTopic]
+      OKActions: [!Ref AlarmTopic]
+      Metrics:
+        - Id: errors
+          ReturnData: false
+          MetricStat:
+            Metric:
+              Namespace: ClaimSense
+              MetricName: Errors
+              Dimensions: [{Name: Service, Value: !Ref ServiceName}]
+            Period: 300
+            Stat: Sum
+        - Id: requests
+          ReturnData: false
+          MetricStat:
+            Metric:
+              Namespace: ClaimSense
+              MetricName: Requests
+              Dimensions: [{Name: Service, Value: !Ref ServiceName}]
+            Period: 300
+            Stat: Sum
+        - Id: error_rate
+          Label: Error rate
+          ReturnData: true
+          Expression: "IF(requests > 0, errors / requests, 0)"
+
+  Dashboard:
+    Type: AWS::CloudWatch::Dashboard
+    Properties:
+      DashboardName: !Sub "${ServiceName}-ops"
+      DashboardBody: !Sub |
+        {
+          "widgets": [
+            {"type": "text", "x": 0, "y": 0, "width": 24, "height": 2,
+             "properties": {"markdown": "## ClaimSense — operations\nError = raised or deterministic-fallback verdict. SLO: error rate <= 5% (alarm), eval pass rate >= 95% (CI gate). Runbook: docs/RUNBOOK.md"}},
+            {"type": "metric", "x": 0, "y": 2, "width": 8, "height": 6,
+             "properties": {"title": "Call volume (requests / 5 min)", "region": "${AWS::Region}", "view": "timeSeries",
+              "stat": "Sum", "period": 300,
+              "metrics": [["ClaimSense", "Requests", "Service", "${ServiceName}"]]}},
+            {"type": "metric", "x": 8, "y": 2, "width": 8, "height": 6,
+             "properties": {"title": "Error rate (alarm > 5%)", "region": "${AWS::Region}", "view": "timeSeries",
+              "period": 300, "yAxis": {"left": {"min": 0, "max": 1}},
+              "metrics": [
+                ["ClaimSense", "Errors", "Service", "${ServiceName}", {"id": "e", "stat": "Sum", "visible": false}],
+                ["ClaimSense", "Requests", "Service", "${ServiceName}", {"id": "r", "stat": "Sum", "visible": false}],
+                [{"expression": "IF(r > 0, e / r, 0)", "label": "error rate", "id": "rate"}]],
+              "annotations": {"horizontal": [{"label": "alarm 5%", "value": 0.05}]}}},
+            {"type": "metric", "x": 16, "y": 2, "width": 8, "height": 6,
+             "properties": {"title": "Latency p95 / p50 (ms)", "region": "${AWS::Region}", "view": "timeSeries",
+              "period": 300,
+              "metrics": [["ClaimSense", "LatencyMs", "Service", "${ServiceName}", {"stat": "p95", "label": "p95"}],
+                          ["ClaimSense", "LatencyMs", "Service", "${ServiceName}", {"stat": "p50", "label": "p50"}]]}},
+            {"type": "alarm", "x": 0, "y": 8, "width": 24, "height": 3,
+             "properties": {"title": "Alarm", "alarms": ["${ErrorRateAlarm.Arn}"]}}
+          ]
+        }
+
+Outputs:
+  DashboardName:
+    Value: !Ref Dashboard
+  AlarmName:
+    Value: !Ref ErrorRateAlarm
+  AlarmTopicArn:
+    Value: !Ref AlarmTopic

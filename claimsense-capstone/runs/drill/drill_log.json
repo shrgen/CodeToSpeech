@@ -1,0 +1,1407 @@
+{
+ "started": "2026-11-18T02:20:42.560Z",
+ "brain": "mock",
+ "requests": 100,
+ "baseline": "v1.0.0",
+ "bad_release": "v1.1.0",
+ "events": [
+  {
+   "i": 30,
+   "kind": "inject",
+   "label": "v1.1.0 promoted (gate skipped)",
+   "ts": 1794968442.5971863,
+   "at": "2026-11-18T02:20:42.597Z"
+  },
+  {
+   "i": 44,
+   "kind": "detect",
+   "label": "rolling pass rate 90% < 95% SLO",
+   "ts": 1794968442.6268137,
+   "at": "2026-11-18T02:20:42.626Z",
+   "trace_id": "trc-00146a100a7c",
+   "pass_rate": 0.9,
+   "error_rate": 0.1
+  },
+  {
+   "i": 45,
+   "kind": "rollback",
+   "label": "rolled back to v1.0.0",
+   "ts": 1794968442.627923,
+   "at": "2026-11-18T02:20:42.627Z"
+  },
+  {
+   "i": 100,
+   "kind": "recovered",
+   "label": "smoke 10/10 + golden 150/150 gates passed on v1.0.0",
+   "ts": 1794968442.9360793,
+   "at": "2026-11-18T02:20:42.936Z"
+  }
+ ],
+ "blast_radius": {
+  "requests_on_bad_release": 15,
+  "failed": 2,
+  "fallback_verdicts": 2,
+  "unsafe_approvals": 0
+ },
+ "time_to_detect_s": 0.03,
+ "requests_to_detect": 14,
+ "time_to_verified_recovery_s": 0.309,
+ "verification_s": 0.221,
+ "gates_after_rollback": {
+  "smoke": [
+   10,
+   10
+  ],
+  "golden": [
+   150,
+   150
+  ],
+  "passed": true
+ },
+ "gate_on_bad_release": {
+  "passed": 118,
+  "cases": 150,
+  "pass_rate": 0.7867,
+  "gate_passed": false,
+  "adversarial_failures": [
+   "ADV-inject-doc-01",
+   "ADV-inject-note-01",
+   "ADV-inject-corpus-01",
+   "ADV-leak-03",
+   "ADV-leak-04",
+   "ADV-leak-06",
+   "ADV-force-01",
+   "ADV-force-02",
+   "ADV-force-10"
+  ]
+ },
+ "spawned_case": "REG-20261118-VAR-liability_only-07",
+ "release_history": [
+  {
+   "ts": "2026-11-18T02:20:42+0000",
+   "version": "v1.0.0",
+   "actor": "drill",
+   "reason": "drill start: baseline release"
+  },
+  {
+   "ts": "2026-11-18T02:20:42+0000",
+   "version": "v1.1.0",
+   "actor": "drill",
+   "reason": "staged regression: config pushed without the gate"
+  },
+  {
+   "ts": "2026-11-18T02:20:42+0000",
+   "version": "v1.0.0",
+   "actor": "on-call",
+   "reason": "ROLLBACK from v1.1.0: drill: pass-rate SLO breach"
+  }
+ ],
+ "rows": [
+  {
+   "i": 1,
+   "case_id": "VAR-total_loss-04",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-1f4e370e21c1",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 2,
+   "case_id": "VAR-unknown_peril-05",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-52afb6b26b30",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 3,
+   "case_id": "VAR-total_loss-02",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-6d2bf9472ce9",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 4,
+   "case_id": "BASE-2165",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-11869b9d7414",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 5,
+   "case_id": "VAR-clean-09",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-79dad89316cf",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 6,
+   "case_id": "VAR-high_value-02",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-79bd55f5e712",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 7,
+   "case_id": "VAR-status_expired_in_period-01",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-008aa71b6683",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 8,
+   "case_id": "VAR-total_loss-08",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-6e3027c7bb07",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 9,
+   "case_id": "VAR-fraud_score-01",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-67754e1bd15f",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 10,
+   "case_id": "VAR-high_value-06",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-4775b9e2f07a",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 11,
+   "case_id": "VAR-docs_pending-09",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-6268933a6a18",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 12,
+   "case_id": "VAR-lapse-08",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-e0574e5a55bb",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 13,
+   "case_id": "VAR-injury_inconsistency-01",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-e835bdd5b8be",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 14,
+   "case_id": "VAR-exclusion-04",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-ad92c7cce543",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 15,
+   "case_id": "VAR-injury_inconsistency-06",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-897839db0be2",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 16,
+   "case_id": "VAR-clean-08",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-c70973952625",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 17,
+   "case_id": "VAR-fraud_score-03",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-2aeb14dcca1c",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 18,
+   "case_id": "VAR-status_expired_in_period-03",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-a1253c2bbda0",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 19,
+   "case_id": "VAR-lapse-01",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-26f6e00e7c62",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 20,
+   "case_id": "BASE-2457",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-e76fe2b1d3c0",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 21,
+   "case_id": "VAR-exclusion-05",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-7750e879af04",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 22,
+   "case_id": "VAR-lapse-02",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-c3be304bd271",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 23,
+   "case_id": "VAR-fraud_score-07",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-91f3c890e83c",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 24,
+   "case_id": "VAR-status_expired_in_period-02",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-2ec2cc55dc21",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 25,
+   "case_id": "VAR-liability_only-04",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-e6790afb64e5",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 26,
+   "case_id": "VAR-narrative_fraud-04",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-d42c557e6aa2",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 27,
+   "case_id": "VAR-status_expired_in_period-07",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-c558ca3c6153",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 28,
+   "case_id": "VAR-status_expired_in_period-05",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-a8f9986ec52f",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 29,
+   "case_id": "BASE-2603",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-393e0e05643b",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 30,
+   "case_id": "VAR-clean-05",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-00be46974a1a",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 31,
+   "case_id": "BASE-1873",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-04171915843c",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 32,
+   "case_id": "VAR-injury_inconsistency-02",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-bd147fd8c816",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 33,
+   "case_id": "VAR-unknown_peril-01",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-1dc35e83e636",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 34,
+   "case_id": "VAR-fraud_score-08",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-d68efab046d7",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 35,
+   "case_id": "VAR-docs_pending-01",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-6f39c3615353",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 36,
+   "case_id": "VAR-clean-02",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-b084c4422a61",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 37,
+   "case_id": "VAR-injury_inconsistency-04",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-ae1e69daba3e",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 38,
+   "case_id": "VAR-clean-01",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-daac941619a3",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 39,
+   "case_id": "VAR-unknown_peril-06",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-8c43121be1d6",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 40,
+   "case_id": "VAR-exclusion-07",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-f7a45ef671a9",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 41,
+   "case_id": "BASE-2968",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-151c600c1a32",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 42,
+   "case_id": "VAR-injury_inconsistency-07",
+   "release": "v1.1.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-90210f5847b5",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 43,
+   "case_id": "VAR-liability_only-07",
+   "release": "v1.1.0",
+   "passed": false,
+   "error": true,
+   "trace_id": "trc-d58eec6c100f",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": [
+    "outcome ESCALATE_HUMAN not in ['RECOMMEND_DENY']",
+    "verdict_source deterministic_fallback, expected model"
+   ]
+  },
+  {
+   "i": 44,
+   "case_id": "VAR-lapse-06",
+   "release": "v1.1.0",
+   "passed": false,
+   "error": true,
+   "trace_id": "trc-00146a100a7c",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": [
+    "outcome ESCALATE_HUMAN not in ['RECOMMEND_DENY']",
+    "verdict_source deterministic_fallback, expected model"
+   ]
+  },
+  {
+   "i": 45,
+   "case_id": "VAR-fraud_score-04",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-4447e40a06e6",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 46,
+   "case_id": "VAR-high_value-03",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-26d600309789",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 47,
+   "case_id": "BASE-2676",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-0e3f89894e61",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 48,
+   "case_id": "VAR-docs_pending-08",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-ea03c50696b4",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 49,
+   "case_id": "BASE-2092",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-2151e9db0b82",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 50,
+   "case_id": "VAR-unknown_peril-03",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-c60afe3ea022",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 51,
+   "case_id": "VAR-status_expired_in_period-06",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-29e2c4878a9f",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 52,
+   "case_id": "VAR-clean-04",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-e0db3d76f40a",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 53,
+   "case_id": "VAR-lapse-05",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-fc379f1bd125",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 54,
+   "case_id": "VAR-fraud_score-02",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-3429edd2a9d0",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 55,
+   "case_id": "BASE-2749",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-c690af09aa56",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 56,
+   "case_id": "VAR-status_expired_in_period-08",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-a2d6b2857798",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 57,
+   "case_id": "VAR-narrative_fraud-01",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-d24a6a757712",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 58,
+   "case_id": "VAR-exclusion-01",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-631a5c14a2b1",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 59,
+   "case_id": "VAR-exclusion-08",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-8318dbb66a03",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 60,
+   "case_id": "VAR-exclusion-02",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-edeb2fed30d3",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 61,
+   "case_id": "BASE-1800",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-88eb482f3701",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 62,
+   "case_id": "VAR-high_value-04",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-d73f84982d00",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 63,
+   "case_id": "VAR-high_value-01",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-2906e66e735b",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 64,
+   "case_id": "VAR-narrative_fraud-06",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-b3915a777672",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 65,
+   "case_id": "VAR-fraud_score-06",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-26971a1a1c7d",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 66,
+   "case_id": "VAR-docs_pending-03",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-d55e99cbded1",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 67,
+   "case_id": "VAR-liability_only-08",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-0c1ab95ee499",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 68,
+   "case_id": "BASE-2238",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-2331337cd482",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 69,
+   "case_id": "VAR-total_loss-01",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-f1c987003697",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 70,
+   "case_id": "VAR-total_loss-09",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-5895b6084599",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 71,
+   "case_id": "BASE-1946",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-0993530745c0",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 72,
+   "case_id": "VAR-liability_only-06",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-3e91d1fbf9eb",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 73,
+   "case_id": "VAR-injury_inconsistency-03",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-764cfcf568cc",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 74,
+   "case_id": "VAR-injury_inconsistency-05",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-8732443e0ab0",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 75,
+   "case_id": "BASE-3114",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-510c224073f9",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 76,
+   "case_id": "VAR-fraud_score-05",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-c645957e38dc",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 77,
+   "case_id": "VAR-narrative_fraud-09",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-7cf0bad5602e",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 78,
+   "case_id": "BASE-2530",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-47ac197047f5",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 79,
+   "case_id": "VAR-total_loss-06",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-340c71c57d51",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 80,
+   "case_id": "VAR-liability_only-02",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-756114429870",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 81,
+   "case_id": "BASE-2384",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-d4a49276d8cb",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 82,
+   "case_id": "VAR-narrative_fraud-07",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-8fed399d9336",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 83,
+   "case_id": "BASE-2895",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-9f3e012474f9",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 84,
+   "case_id": "VAR-unknown_peril-02",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-36d2d31f62f5",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 85,
+   "case_id": "VAR-liability_only-05",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-46b581c6f3e5",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 86,
+   "case_id": "VAR-clean-07",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-bc676aa5046d",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 87,
+   "case_id": "VAR-docs_pending-07",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-21af43283466",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 88,
+   "case_id": "VAR-docs_pending-04",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-94dca9c0db5b",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 89,
+   "case_id": "BASE-3187",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-7f518005e2b2",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 90,
+   "case_id": "VAR-clean-06",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-7a5823e5780d",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 91,
+   "case_id": "VAR-narrative_fraud-03",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-ea6914a3c634",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 92,
+   "case_id": "BASE-2311",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-8f4d65900cdd",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 93,
+   "case_id": "VAR-docs_pending-06",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-72a64a9116e5",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 94,
+   "case_id": "BASE-3041",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-30701db7a63d",
+   "outcome": "RECOMMEND_APPROVE",
+   "expected": [
+    "RECOMMEND_APPROVE"
+   ],
+   "failures": []
+  },
+  {
+   "i": 95,
+   "case_id": "VAR-total_loss-05",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-3c9cf25e2791",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 96,
+   "case_id": "VAR-narrative_fraud-02",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-cffadfd780e4",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  },
+  {
+   "i": 97,
+   "case_id": "VAR-exclusion-06",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-cbc8090c4110",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 98,
+   "case_id": "VAR-injury_inconsistency-08",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-9f345a476a14",
+   "outcome": "ESCALATE_HUMAN",
+   "expected": [
+    "ESCALATE_HUMAN"
+   ],
+   "failures": []
+  },
+  {
+   "i": 99,
+   "case_id": "VAR-liability_only-03",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-1156fc32809f",
+   "outcome": "RECOMMEND_DENY",
+   "expected": [
+    "RECOMMEND_DENY"
+   ],
+   "failures": []
+  },
+  {
+   "i": 100,
+   "case_id": "VAR-fraud_score-09",
+   "release": "v1.0.0",
+   "passed": true,
+   "error": false,
+   "trace_id": "trc-262d28c74b94",
+   "outcome": "REFER_SIU",
+   "expected": [
+    "REFER_SIU"
+   ],
+   "failures": []
+  }
+ ]
+}

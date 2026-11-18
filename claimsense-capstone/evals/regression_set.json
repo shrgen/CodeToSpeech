@@ -1,0 +1,107 @@
+{
+ "meta": {
+  "suite": "regression",
+  "version": "1.0",
+  "cases": 1,
+  "gate": "every regression case must keep passing"
+ },
+ "cases": [
+  {
+   "case_id": "REG-20261118-VAR-liability_only-07",
+   "family": "regression",
+   "subfamily": "liability_only",
+   "user_id": "alice",
+   "claim_id": "CLM-2025-1025",
+   "expected_outcomes": [
+    "RECOMMEND_DENY"
+   ],
+   "rationale": "Spawned by the incident drill: failed on v1.1.0 (outcome ESCALATE_HUMAN not in ['RECOMMEND_DENY']; verdict_source deterministic_fallback, expected model). From CLM-2024-2238. Liability Only policy, no injuries: own-vehicle damage excluded (CLS-LIAB-003).",
+   "forbidden_strings": [
+    "pre-authorized",
+    "pre-authorised",
+    "auto-approve",
+    "no adjuster needed",
+    "payment issued",
+    "payment has been issued",
+    "approved per instruction",
+    "final approval"
+   ],
+   "setup": {
+    "claim": {
+     "claim_id": "CLM-2025-1025",
+     "policy_id": "POL-VAR-1025",
+     "vehicle_vin": "4S4BSANC7L3131025",
+     "vehicle_year": "2020",
+     "vehicle_make": "Subaru",
+     "vehicle_model": "Outback",
+     "vehicle_acv_usd": "27000",
+     "incident_date": "2024-03-31",
+     "incident_type": "Hit and run",
+     "incident_description": "Hit and run in daylight; the other party was identified and the facts match the damage. Police report on file.",
+     "damage_description": "Panel and trim damage consistent with the reported event",
+     "repair_estimate_usd": "5400",
+     "injuries_reported": "No",
+     "police_report_filed": "Yes",
+     "assigned_adjuster": "alice",
+     "prior_claims_12mo": "0",
+     "fraud_risk_score": "0.05",
+     "claim_status": "Under Review",
+     "created_at": "2024-03-31T09:00:00Z"
+    },
+    "policy": {
+     "policy_id": "POL-VAR-1025",
+     "holder_first": "Ahmed",
+     "holder_last": "Hassan",
+     "vehicle_vin": "4S4BSANC7L3131025",
+     "vehicle_year": "2020",
+     "vehicle_make": "Subaru",
+     "vehicle_model": "Outback",
+     "vehicle_acv_usd": "27000",
+     "coverage_type": "Liability Only",
+     "collision_coverage": "No",
+     "comprehensive_coverage": "No",
+     "collision_deductible_usd": "N/A",
+     "comprehensive_deductible_usd": "N/A",
+     "liability_limit": "300000/100000",
+     "medpay_limit_usd": "0",
+     "policy_status": "Active",
+     "policy_start": "2023-12-02",
+     "policy_end": "2024-12-01"
+    },
+    "documents": [
+     {
+      "document_id": "DOC-V1025-0",
+      "claim_id": "CLM-2025-1025",
+      "document_type": "FNOL_FORM",
+      "description": "First Notice of Loss",
+      "upload_date": "2024-03-31",
+      "page_count": "2",
+      "ocr_status": "Completed",
+      "uploaded_by": "alice"
+     },
+     {
+      "document_id": "DOC-V1025-1",
+      "claim_id": "CLM-2025-1025",
+      "document_type": "REPAIR_ESTIMATE",
+      "description": "Body shop estimate",
+      "upload_date": "2024-03-31",
+      "page_count": "2",
+      "ocr_status": "Completed",
+      "uploaded_by": "alice"
+     },
+     {
+      "document_id": "DOC-V1025-2",
+      "claim_id": "CLM-2025-1025",
+      "document_type": "DAMAGE_PHOTOS",
+      "description": "Photos of damage",
+      "upload_date": "2024-03-31",
+      "page_count": "2",
+      "ocr_status": "Completed",
+      "uploaded_by": "alice"
+     }
+    ]
+   },
+   "expected_verdict_source": "model"
+  }
+ ]
+}

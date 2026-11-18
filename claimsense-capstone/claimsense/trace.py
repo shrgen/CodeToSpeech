@@ -75,7 +75,7 @@ def summarize(spans: list[dict[str, Any]]) -> dict[str, Any]:
     """Roll spans up to per-request rows and the dashboard numbers."""
     runs = [s for s in spans if s["span"] == "claim.run"]
     lat = [s["dur_ms"] + s.get("simulated_total_model_ms", 0) for s in runs]
-    errors = [s for s in runs if s.get("error") or s.get("verdict_source") == "deterministic_fallback"]
+    errors = [s for s in runs if is_error(s)]
     tok_in = sum(s.get("input_tokens", 0) for s in runs)
     tok_out = sum(s.get("output_tokens", 0) for s in runs)
     simulated = any(s.get("simulated_total_model_ms") for s in runs)
@@ -90,6 +90,16 @@ def summarize(spans: list[dict[str, Any]]) -> dict[str, Any]:
         "outcomes": _count(r.get("outcome") for r in runs),
         "verdict_sources": _count(r.get("verdict_source") for r in runs),
     }
+
+
+def is_error(run_span: dict[str, Any]) -> bool:
+    """An error is a request that raised, or whose verdict came from the deterministic fallback.
+    A scope refusal (AccessDenied -> 403) is the door working, not a failure, and is not counted;
+    this matches the Errors metric the live service emits (claimsense/service.py)."""
+    err = run_span.get("error") or ""
+    if err.startswith("AccessDenied"):
+        return False
+    return bool(err) or run_span.get("verdict_source") == "deterministic_fallback"
 
 
 def _count(it) -> dict[str, int]:

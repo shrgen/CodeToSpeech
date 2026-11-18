@@ -1,0 +1,8 @@
+{
+  "version": "v1.0.0",
+  "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "index_exclude": [],
+  "top_k": 6,
+  "quarantine": true,
+  "notes": "First gated release: full 12-clause index, input quarantine on."
+}
