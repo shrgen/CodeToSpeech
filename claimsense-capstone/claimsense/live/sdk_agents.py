@@ -121,7 +121,8 @@ class BedrockBrain:
         if "AWS_REGION_NAME" not in os.environ:
             os.environ["AWS_REGION_NAME"] = os.environ.get("AWS_REGION",
                                                            os.environ.get("AWS_DEFAULT_REGION", "us-east-1"))
-        model = LitellmModel(model=f"bedrock/{self.model_id}")
+        # LiteLLM Converse route, as in the course stack (bedrock/converse/<inference-profile id>)
+        model = LitellmModel(model=f"bedrock/converse/{self.model_id}")
         settings = ModelSettings(temperature=temperature)
         self._triage = Agent(name="claimsense_triage", instructions=TRIAGE_INSTRUCTIONS,
                              model=model, model_settings=settings, output_type=TriageOut)
