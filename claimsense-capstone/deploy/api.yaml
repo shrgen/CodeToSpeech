@@ -1,0 +1,87 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  ClaimSense recommendation API — one Lambda behind an HTTP API.
+  POST /recommend {user_id, claim_id, note?}  ·  GET /health
+  Every request prints one EMF line, which feeds ops/cloudwatch/observability.yaml.
+
+Parameters:
+  CodeBucket: {Type: String, Description: S3 bucket holding the Lambda zip}
+  CodeKey: {Type: String, Description: S3 key of the Lambda zip (deploy/deploy_api.sh uploads it)}
+  Brain:
+    Type: String
+    Default: mock
+    AllowedValues: [mock, bedrock]
+  ModelId:
+    Type: String
+    Default: us.anthropic.claude-haiku-4-5-20251001-v1:0
+  AllowedOrigin:
+    Type: String
+    Default: "*"
+    Description: CORS origin, e.g. the CloudFront portal URL
+
+Resources:
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal: {Service: lambda.amazonaws.com}
+            Action: sts:AssumeRole
+      ManagedPolicyArns: [arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole]
+      Policies:
+        - PolicyName: bedrock-invoke-haiku-only
+          PolicyDocument:
+            Statement:
+              - Effect: Allow
+                Action: [bedrock:InvokeModel, bedrock:InvokeModelWithResponseStream]
+                Resource:
+                  - "arn:aws:bedrock:*::foundation-model/anthropic.claude-haiku-4-5*"
+                  - !Sub "arn:aws:bedrock:*:${AWS::AccountId}:inference-profile/us.anthropic.claude-haiku-4-5*"
+
+  Function:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: claimsense-recommend
+      Runtime: python3.12
+      Handler: claimsense.live.lambda_handler.handler
+      Code: {S3Bucket: !Ref CodeBucket, S3Key: !Ref CodeKey}
+      Role: !GetAtt Role.Arn
+      MemorySize: 1024
+      Timeout: 60
+      ReservedConcurrentExecutions: 5          # test workloads only; caps cost and blast radius
+      Environment:
+        Variables:
+          CLAIMSENSE_BRAIN: !Ref Brain
+          CLAIMSENSE_MODEL_ID: !Ref ModelId
+          AWS_REGION_NAME: !Ref AWS::Region
+
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/aws/lambda/${Function}"
+      RetentionInDays: 14
+
+  Api:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: claimsense-api
+      ProtocolType: HTTP
+      CorsConfiguration:
+        AllowOrigins: [!Ref AllowedOrigin]
+        AllowMethods: [GET, POST, OPTIONS]
+        AllowHeaders: [content-type]
+      Target: !GetAtt Function.Arn
+
+  InvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref Function
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${Api}/*"
+
+Outputs:
+  ApiUrl:
+    Value: !GetAtt Api.ApiEndpoint
+    Description: Paste into the portal's "About & live mode" tab

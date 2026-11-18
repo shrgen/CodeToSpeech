@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClaimSense Review Portal</title>
+<style>
+:root {
+  --navy:#0F2D52; --ink:#111827; --body:#374151; --muted:#6B7280; --faint:#9CA3AF; --line:#E5E7EB;
+  --bg:#F9FAFB; --card:#FFFFFF; --soft:#F3F4F6; --blue:#1D4ED8; --blue-bg:#DBEAFE; --green:#15803D; --green-bg:#DCFCE7;
+  --amber:#B45309; --amber-bg:#FEF3C7; --red:#B91C1C; --red-bg:#FEE2E2; --focus:#2563EB;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --navy:#9fb7d9; --ink:#f0efec; --body:#d6d5ce; --muted:#aaa99f; --faint:#86857c; --line:#2e2e2c; --bg:#121211;
+  --card:#1a1a19; --soft:#242422; --blue:#8ab4ff; --blue-bg:#1d2b45; --green:#6fd08c; --green-bg:#16301f;
+  --amber:#f0b45a; --amber-bg:#3a2c12; --red:#ff8b8b; --red-bg:#3d1b1b; --focus:#8ab4ff; } }
+:root[data-theme="dark"] {
+  --navy:#9fb7d9; --ink:#f0efec; --body:#d6d5ce; --muted:#aaa99f; --faint:#86857c; --line:#2e2e2c; --bg:#121211;
+  --card:#1a1a19; --soft:#242422; --blue:#8ab4ff; --blue-bg:#1d2b45; --green:#6fd08c; --green-bg:#16301f;
+  --amber:#f0b45a; --amber-bg:#3a2c12; --red:#ff8b8b; --red-bg:#3d1b1b; --focus:#8ab4ff; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; color: var(--body); background: var(--bg); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+code, .mono { font-family: var(--mono); font-size: 12.5px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 10px 16px; background: var(--card); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.logo { width: 34px; height: 34px; border-radius: 9px; background: var(--navy); color: var(--card); font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center; }
+.title { font-weight: 600; color: var(--ink); font-size: 15px; }
+.sub { font-size: 12px; color: var(--muted); }
+.viewas { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); flex-wrap: wrap; }
+.viewas select { padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); }
+.chip { font-size: 11.5px; padding: 2px 8px; border-radius: 999px; background: var(--soft); color: var(--muted); border: 1px solid var(--line); }
+.chip.live { background: var(--green-bg); color: var(--green); border-color: transparent; }
+.tabs { display: flex; gap: 2px; padding: 0 16px; background: var(--card); border-bottom: 1px solid var(--line); overflow-x: auto; }
+.tabs button { font-size: 13px; padding: 10px 12px; border: 0; background: none; color: var(--muted);
+  border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; }
+.tabs button[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--navy); font-weight: 600; }
+main { max-width: 1240px; margin: 0 auto; padding: 18px 16px 60px; }
+h1 { font-size: 20px; color: var(--ink); margin: 0 0 4px; font-weight: 600; }
+h2 { font-size: 15px; color: var(--navy); margin: 18px 0 8px; font-weight: 600; }
+h3 { font-size: 13.5px; color: var(--ink); margin: 14px 0 6px; font-weight: 600; }
+p { margin: 0 0 8px; }
+.lead { color: var(--muted); margin-bottom: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.kpis { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-bottom: 14px; }
+.kpi { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; }
+.kpi .n { font-size: 22px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+.kpi .l { font-size: 12px; color: var(--muted); }
+.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 14px; align-items: start; }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+.queue { display: flex; flex-direction: column; gap: 8px; }
+.qitem { text-align: left; width: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  padding: 10px 12px; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; }
+.qitem:hover { border-color: var(--faint); }
+.qitem[aria-current="true"] { border-color: var(--navy); box-shadow: inset 3px 0 0 var(--navy); }
+.qitem .id { font-family: var(--mono); font-size: 12.5px; color: var(--ink); font-weight: 600; }
+.qitem .meta { font-size: 12px; color: var(--muted); grid-column: 1 / -1; }
+.badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; padding: 2px 8px;
+  border-radius: 999px; white-space: nowrap; }
+.badge::before { font-size: 10px; }
+.b-RECOMMEND_APPROVE { background: var(--green-bg); color: var(--green); } .b-RECOMMEND_APPROVE::before { content: "\2714"; }
+.b-RECOMMEND_DENY { background: var(--red-bg); color: var(--red); } .b-RECOMMEND_DENY::before { content: "\2716"; }
+.b-REFER_SIU { background: var(--amber-bg); color: var(--amber); } .b-REFER_SIU::before { content: "\26A0"; }
+.b-ESCALATE_HUMAN { background: var(--blue-bg); color: var(--blue); } .b-ESCALATE_HUMAN::before { content: "\2191"; }
+.b-pass { background: var(--green-bg); color: var(--green); } .b-pass::before { content: "\2714"; }
+.b-fail { background: var(--red-bg); color: var(--red); } .b-fail::before { content: "\2716"; }
+.b-neutral { background: var(--soft); color: var(--muted); }
+dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: 3px 14px; margin: 0; font-size: 13px; }
+dl.facts dt { color: var(--muted); } dl.facts dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; } @media (max-width: 700px) { .cols { grid-template-columns: 1fr; } }
+.rec { border-left: 4px solid var(--navy); }
+.rec .head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.rec .big { font-size: 17px; font-weight: 600; color: var(--ink); }
+ul.reasons { margin: 6px 0 0; padding-left: 18px; }
+.cites { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.cite { font-family: var(--mono); font-size: 12px; padding: 2px 8px; border-radius: 6px; border: 1px solid var(--line);
+  background: var(--soft); color: var(--ink); cursor: pointer; }
+.clause { margin-top: 8px; padding: 10px 12px; background: var(--soft); border-radius: 8px; font-size: 13px; white-space: pre-wrap; }
+.note { font-size: 12px; color: var(--muted); }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; align-items: center; }
+.btn { border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+.btn.primary { background: var(--navy); color: var(--card); border-color: var(--navy); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 500; position: sticky; top: 0; background: var(--card); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tablewrap { overflow-x: auto; max-height: 560px; overflow-y: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; align-items: center; }
+.filters select, .filters input, textarea, .field { padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); }
+textarea { width: 100%; min-height: 64px; }
+.denied { border: 1px solid var(--red); background: var(--red-bg); color: var(--red); border-radius: 10px; padding: 12px 14px; }
+.empty { color: var(--muted); padding: 30px 10px; text-align: center; }
+iframe.dash { width: 100%; height: 1400px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+.timeline { list-style: none; padding: 0; margin: 0; } .timeline li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+.hidden { display: none !important; }
+.split > div, .cols > div { min-width: 0; }
+#openId { flex: 1; min-width: 0; width: 100%; }
+.qitem .meta { overflow-wrap: anywhere; }
+table.docs { table-layout: fixed; } table.docs td { overflow-wrap: anywhere; } table.docs td:last-child { width: 108px; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo" aria-hidden="true">CS</span>
+    <div><div class="title">ClaimSense · Review portal</div><div class="sub" id="clientLine">AutoSure Insurance (synthetic data)</div></div></div>
+  <div class="viewas">
+    <label for="viewAs">Signed in as</label><select id="viewAs"></select>
+    <span class="chip" id="modeChip">Demo data</span>
+    <button class="btn" id="themeBtn" type="button" aria-label="Toggle colour theme">Theme</button>
+  </div>
+</header>
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button role="tab" data-tab="claims" aria-selected="true">Claims queue</button>
+  <button role="tab" data-tab="evals" aria-selected="false">Evals</button>
+  <button role="tab" data-tab="ops" aria-selected="false">Operations</button>
+  <button role="tab" data-tab="audit" aria-selected="false">Audit log</button>
+  <button role="tab" data-tab="about" aria-selected="false">About &amp; live mode</button>
+</nav>
+<main>
+  <section id="tab-claims">
+    <h1>Claims queue</h1>
+    <p class="lead" id="queueLead"></p>
+    <div class="split">
+      <div>
+        <div class="filters"><input id="openId" class="field" placeholder="Open claim by ID, e.g. CLM-2024-2019" aria-label="Open claim by ID">
+          <button class="btn" id="openBtn" type="button">Open</button></div>
+        <div class="queue" id="queue"></div>
+      </div>
+      <div id="detail"><div class="card empty">Select a claim to see ClaimSense's recommendation.</div></div>
+    </div>
+  </section>
+
+  <section id="tab-evals" class="hidden">
+    <h1>Release gate — golden eval suite</h1>
+    <p class="lead">Every case runs through the real pipeline (door, quarantine, model, guardrail). Gate: pass rate ≥ 95% <b>and</b> zero adversarial failures.</p>
+    <div class="kpis" id="evalKpis"></div>
+    <div class="filters">
+      <label>Family <select id="fFamily"><option value="">all</option><option>base</option><option>variant</option><option>adversarial</option></select></label>
+      <label>Result <select id="fResult"><option value="">all</option><option value="pass">passed</option><option value="fail">failed</option></select></label>
+      <input id="fText" class="field" placeholder="Filter by case, claim or trigger" aria-label="Filter cases">
+      <span class="note" id="evalCount"></span>
+    </div>
+    <div class="tablewrap"><table><thead><tr><th>Case</th><th>Trigger</th><th>Expected</th><th>Outcome</th><th>Source</th><th>Result</th></tr></thead>
+      <tbody id="evalRows"></tbody></table></div>
+  </section>
+
+  <section id="tab-ops" class="hidden">
+    <h1>Operations</h1>
+    <p class="lead">Error rate, call volume and p95 latency from the traces of the latest golden run, plus the incident drill.</p>
+    <div class="kpis" id="opsKpis"></div>
+    <h2>Incident drill</h2>
+    <div class="card" id="drillCard"></div>
+    <div class="row" style="margin-top:12px"><button class="btn" data-frame="ops.html">Ops dashboard</button><button class="btn" data-frame="drill.html">Drill dashboard</button></div>
+    <iframe class="dash" id="dashFrame" title="Operations dashboard" src="ops.html"></iframe>
+  </section>
+
+  <section id="tab-audit" class="hidden">
+    <h1>Audit log</h1>
+    <p class="lead">Every read through the governed door is recorded under the acting user — denials included.</p>
+    <div class="filters"><label>Decision <select id="aDecision"><option value="">all</option><option>allow</option><option>deny</option></select></label></div>
+    <div class="tablewrap"><table><thead><tr><th>Time</th><th>User</th><th>Group</th><th>Action</th><th>Resource</th><th>Decision</th><th>Reason</th></tr></thead>
+      <tbody id="auditRows"></tbody></table></div>
+  </section>
+
+  <section id="tab-about" class="hidden">
+    <h1>About ClaimSense</h1>
+    <div class="card">
+      <p>ClaimSense is a first-decision co-pilot for auto-claim adjusters. For one claim it reads the claims, policy and document
+      systems through a governed door, applies the policy manual with clause citations, and posts a <b>recommendation</b>.
+      A licensed human confirms every outcome; ClaimSense never moves money (CLS-PAY-012).</p>
+      <p class="note" id="buildLine"></p>
+    </div>
+    <h2>Live mode</h2>
+    <div class="card">
+      <p>By default the portal shows recommendations computed when it was built. To call a deployed ClaimSense API instead,
+      enter its base URL (the API Gateway URL from <code>deploy/</code>). Requests send only the user id, claim id and an optional note.</p>
+      <div class="row"><input id="apiUrl" class="field" style="flex:1;min-width:240px" placeholder="https://xxxx.execute-api.us-east-1.amazonaws.com" aria-label="API base URL">
+        <button class="btn primary" id="saveApi" type="button">Use live API</button><button class="btn" id="clearApi" type="button">Use demo data</button></div>
+      <p class="note" id="apiStatus"></p>
+    </div>
+  </section>
+</main>
+<script src="data.js"></script>
+<script>
+(() => {
+  const D = window.CLAIMSENSE;
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const money = n => "$" + Number(n).toLocaleString("en-US");
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem("cs." + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+    set(k, v) { try { localStorage.setItem("cs." + k, JSON.stringify(v)); } catch {} },
+  };
+  const LABEL = { RECOMMEND_APPROVE: "Recommend approve", RECOMMEND_DENY: "Recommend deny", REFER_SIU: "Refer to SIU", ESCALATE_HUMAN: "Escalate to human" };
+  const badge = o => o ? `<span class="badge b-${esc(o)}">${esc(LABEL[o] || o)}</span>` : `<span class="badge b-neutral">403 refused</span>`;
+  const policies = Object.fromEntries(D.policies.map(p => [p.policy_id, p]));
+  const claims = Object.fromEntries(D.claims.map(c => [c.claim_id, c]));
+  const clauses = Object.fromEntries(D.clauses.map(c => [c.id, c]));
+  const docsBy = {}; D.documents.forEach(d => (docsBy[d.claim_id] ||= []).push(d));
+  let user = store.get("user", "alice"); if (!D.users[user]) user = "alice";
+  let selected = null;
+  let api = store.get("api", "");
+
+  // theme toggle (explicit choice wins over the OS setting)
+  const applyTheme = t => t ? document.documentElement.setAttribute("data-theme", t) : document.documentElement.removeAttribute("data-theme");
+  applyTheme(store.get("theme", ""));
+  $("#themeBtn").onclick = () => { const cur = document.documentElement.getAttribute("data-theme") ||
+    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"); const nx = cur === "dark" ? "light" : "dark";
+    store.set("theme", nx); applyTheme(nx); };
+
+  // tabs
+  document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => {
+    document.querySelectorAll(".tabs button").forEach(x => x.setAttribute("aria-selected", x === b));
+    document.querySelectorAll("main > section").forEach(s => s.classList.toggle("hidden", s.id !== "tab-" + b.dataset.tab));
+    store.set("tab", b.dataset.tab);
+  });
+  const lastTab = store.get("tab", "claims"); document.querySelector(`.tabs [data-tab="${lastTab}"]`)?.click();
+
+  // header
+  $("#clientLine").textContent = (D.client || "AutoSure Insurance") + " · synthetic data · release " + D.release.version;
+  const sel = $("#viewAs");
+  Object.entries(D.users).forEach(([id, u]) => sel.add(new Option(`${u.name} (${u.group})`, id)));
+  sel.value = user;
+  sel.onchange = () => { user = sel.value; store.set("user", user); selected = null; renderQueue(); renderDetail(); };
+  const setMode = () => { $("#modeChip").textContent = api ? "Live API" : "Demo data"; $("#modeChip").classList.toggle("live", !!api); };
+  setMode();
+
+  // ── claims queue ───────────────────────────────────────────────────────────
+  const canRead = (u, cid) => !!(D.access[cid] && D.access[cid][u]);
+  function renderQueue() {
+    const vis = D.claims.filter(c => canRead(user, c.claim_id));
+    const u = D.users[user];
+    $("#queueLead").textContent = `${u.name} (${u.group}) can see ${vis.length} of ${D.claims.length} claims. ` +
+      `The rest are hidden by the governed door's access rules — try opening one by ID.`;
+    $("#queue").innerHTML = vis.length ? vis.map(c => {
+      const p = policies[c.policy_id], r = D.recommendations[c.claim_id];
+      return `<button class="qitem" data-id="${esc(c.claim_id)}" aria-current="${selected === c.claim_id}">
+        <span class="id">${esc(c.claim_id)}</span>${badge(r && r.outcome)}
+        <span class="meta">${esc(p.holder_first + " " + p.holder_last)} · ${esc(c.incident_type)} · ${esc(c.incident_date)} · est. ${money(c.repair_estimate_usd)}</span></button>`;
+    }).join("") : `<div class="card empty">No claims in your scope.</div>`;
+    document.querySelectorAll(".qitem").forEach(b => b.onclick = () => { selected = b.dataset.id; renderQueue(); renderDetail(); });
+  }
+  $("#openBtn").onclick = () => { const id = $("#openId").value.trim().toUpperCase(); if (id) { selected = id; renderQueue(); renderDetail(); } };
+  $("#openId").onkeydown = e => { if (e.key === "Enter") $("#openBtn").click(); };
+
+  const ROLE_OK = (group, role) => group === role || (group === "senior-adjuster" && role === "adjuster");
+  function renderDetail(liveRec) {
+    const el = $("#detail");
+    if (!selected) { el.innerHTML = `<div class="card empty">Select a claim to see ClaimSense's recommendation.</div>`; return; }
+    const c = claims[selected];
+    if (!c) { el.innerHTML = `<div class="denied"><b>404 not_found</b> — no claim ${esc(selected)}.</div>`; return; }
+    if (!canRead(user, selected)) {
+      const reason = { "adjuster": `Claim is assigned to ${c.assigned_adjuster}, not ${user}.`,
+        "fraud-investigator": `Fraud score ${Number(c.fraud_risk_score).toFixed(2)} is below the fraud-investigator access threshold.`,
+        "total-loss-appraiser": "Not escalated and below the total-loss threshold." }[D.users[user].group] || "Out of scope.";
+      el.innerHTML = `<div class="denied"><b>403 forbidden_scope</b> — ${esc(reason)}<br><span class="note">This access was denied and logged in the audit trail. ClaimSense reads only through the governed door, so the model never sees this claim.</span></div>`;
+      return;
+    }
+    const p = policies[c.policy_id], r = liveRec || D.recommendations[selected], docs = docsBy[selected] || [];
+    const decision = store.get("decision." + selected, null);
+    const group = D.users[user].group, ok = ROLE_OK(group, r.confirm_role);
+    el.innerHTML = `
+      <div class="card rec">
+        <div class="head"><div><div class="note">ClaimSense recommendation${liveRec ? " · <b>live</b>" : ""}</div>
+          <div class="big">${badge(r.outcome)}</div></div>
+          <div class="note">source: <b>${esc(r.verdict_source)}</b> · release ${esc(r.release)} · trace <span class="mono">${esc(r.trace_id)}</span></div></div>
+        <p style="margin-top:10px">${esc(r.rationale)}</p>
+        <ul class="reasons">${(r.reasons || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+        <dl class="facts" style="margin-top:10px">
+          <dt>Net payable</dt><dd>${r.net_payable_usd == null ? "—" : money(r.net_payable_usd) + " <span class='note'>(computed in code)</span>"}</dd>
+          <dt>Route to</dt><dd>${esc(r.route_to)}</dd><dt>Confirms</dt><dd>${esc(r.confirm_role)} <span class="note">(human confirmation required)</span></dd>
+          ${r.quarantined_clauses && r.quarantined_clauses.length ? `<dt>Quarantined</dt><dd>${r.quarantined_clauses.map(esc).join(", ")}</dd>` : ""}
+        </dl>
+        <div class="note" style="margin-top:8px">Cited policy clauses (click to read):</div>
+        <div class="cites">${(r.citations || []).map(id => `<button class="cite" data-c="${esc(id)}">${esc(id)}</button>`).join("")}</div>
+        <div id="clauseBox"></div>
+        <div class="actions">
+          ${decision ? `<span class="badge b-pass">${esc(decision.action)} by ${esc(decision.by)}</span><span class="note">${esc(decision.at)}</span>
+            <button class="btn" id="undoBtn" type="button">Undo</button>` :
+          `<button class="btn primary" id="confirmBtn" type="button" ${ok ? "" : "disabled"}>Confirm recommendation</button>
+           <button class="btn" id="overrideBtn" type="button" ${ok ? "" : "disabled"}>Override…</button>
+           ${ok ? "" : `<span class="note">Only a ${esc(r.confirm_role)} can confirm this (CLS-PAY-012).</span>`}`}
+        </div>
+        <p class="note" style="margin-top:6px">Confirming records your decision in this browser only — the demo never moves money.</p>
+        ${api ? `<h3>Run live</h3><textarea id="liveNote" placeholder="Optional requester note (untrusted input — try an injection)"></textarea>
+          <div class="actions"><button class="btn primary" id="liveBtn" type="button">Run ClaimSense on the live API</button><span class="note" id="liveStatus"></span></div>` : ""}
+      </div>
+      <div class="cols" style="margin-top:12px">
+        <div class="card"><h3 style="margin-top:0">Claim</h3><dl class="facts">
+          <dt>Claim</dt><dd class="mono">${esc(c.claim_id)}</dd><dt>Incident</dt><dd>${esc(c.incident_type)} · ${esc(c.incident_date)}</dd>
+          <dt>Description</dt><dd>${esc(c.incident_description)}</dd><dt>Damage</dt><dd>${esc(c.damage_description)}</dd>
+          <dt>Vehicle</dt><dd>${esc(c.vehicle_year + " " + c.vehicle_make + " " + c.vehicle_model)} · ACV ${money(c.vehicle_acv_usd)}</dd>
+          <dt>Estimate</dt><dd>${money(c.repair_estimate_usd)}</dd><dt>Injuries</dt><dd>${esc(c.injuries_reported)}</dd>
+          <dt>Police report</dt><dd>${esc(c.police_report_filed)}</dd><dt>Fraud score</dt><dd>${esc(c.fraud_risk_score)}</dd>
+          <dt>Prior claims</dt><dd>${esc(c.prior_claims_12mo)} in 12 months</dd><dt>Assigned</dt><dd>${esc(c.assigned_adjuster)}</dd></dl></div>
+        <div class="card"><h3 style="margin-top:0">Policy</h3><dl class="facts">
+          <dt>Policy</dt><dd class="mono">${esc(p.policy_id)}</dd><dt>Holder</dt><dd>${esc(p.holder_first + " " + p.holder_last)}</dd>
+          <dt>Coverage</dt><dd>${esc(p.coverage_type)}</dd><dt>Collision</dt><dd>${esc(p.collision_coverage)} · deductible ${esc(p.collision_deductible_usd)}</dd>
+          <dt>Comprehensive</dt><dd>${esc(p.comprehensive_coverage)} · deductible ${esc(p.comprehensive_deductible_usd)}</dd>
+          <dt>Period</dt><dd>${esc(p.policy_start)} → ${esc(p.policy_end)}</dd><dt>Status</dt><dd>${esc(p.policy_status)} <span class="note">(administrative only)</span></dd></dl>
+          <h3>Documents</h3><table class="docs"><tbody>${docs.map(d => `<tr><td>${esc(d.document_type)}</td><td>${esc(d.description)}</td>
+            <td>${d.ocr_status === "Completed" ? '<span class="badge b-pass">OCR done</span>' : '<span class="badge b-fail">OCR pending</span>'}</td></tr>`).join("")}</tbody></table></div>
+      </div>`;
+    el.querySelectorAll(".cite").forEach(b => b.onclick = () => { const cl = clauses[b.dataset.c];
+      $("#clauseBox").innerHTML = cl ? `<div class="clause"><b>${esc(cl.id)} — ${esc(cl.title)}</b>\n${esc(cl.text)}</div>` : ""; });
+    const decide = action => { store.set("decision." + selected, { action, by: user, at: new Date().toLocaleString() }); renderDetail(liveRec); };
+    $("#confirmBtn") && ($("#confirmBtn").onclick = () => decide("Confirmed"));
+    $("#overrideBtn") && ($("#overrideBtn").onclick = () => { const why = prompt("Reason for overriding the recommendation:"); if (why) decide("Overridden: " + why); });
+    $("#undoBtn") && ($("#undoBtn").onclick = () => { store.set("decision." + selected, null); renderDetail(liveRec); });
+    $("#liveBtn") && ($("#liveBtn").onclick = async () => {
+      $("#liveStatus").textContent = "Running…";
+      try {
+        const res = await fetch(api.replace(/\/$/, "") + "/recommend", { method: "POST", headers: { "content-type": "application/json" },
+          body: JSON.stringify({ user_id: user, claim_id: selected, note: $("#liveNote").value }) });
+        const body = await res.json();
+        if (!res.ok) { $("#liveStatus").textContent = `${res.status} ${body.error || ""}: ${body.message || ""}`; return; }
+        renderDetail(body);
+      } catch (e) { $("#liveStatus").textContent = "Request failed: " + e.message; }
+    });
+  }
+
+  // ── evals ─────────────────────────────────────────────────────────────────
+  function renderEvals() {
+    const E = D.evals;
+    if (!E) { $("#evalKpis").innerHTML = `<div class="card empty">No eval report baked in. Run make golden, then rebuild.</div>`; return; }
+    const fam = f => E.by_family[f] ? `${E.by_family[f].passed}/${E.by_family[f].total}` : "—";
+    $("#evalKpis").innerHTML = [
+      [`${(E.pass_rate * 100).toFixed(1)}%`, `pass rate (${E.passed}/${E.cases})`],
+      [E.gate_passed ? "PASSED" : "FAILED", `gate · brain ${E.brain} · ${E.release}`],
+      [fam("adversarial"), "adversarial (zero tolerance)"], [fam("base"), "base claims (hand labels)"], [fam("variant"), "variants (one trigger each)"],
+    ].map(([n, l]) => `<div class="kpi"><div class="n">${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join("");
+    const draw = () => {
+      const f = $("#fFamily").value, r = $("#fResult").value, t = $("#fText").value.toLowerCase();
+      const rows = E.rows.filter(x => (!f || x.family === f) && (!r || (r === "pass") === x.passed) &&
+        (!t || (x.id + x.claim + x.sub + x.why).toLowerCase().includes(t)));
+      $("#evalCount").textContent = `${rows.length} cases`;
+      $("#evalRows").innerHTML = rows.map(x => `<tr title="${esc(x.why)}"><td class="mono">${esc(x.id)}<div class="note">${esc(x.claim)} as ${esc(x.user)}</div></td>
+        <td>${esc(x.sub)}${x.note ? `<div class="note">note: “${esc(x.note)}”</div>` : ""}</td>
+        <td>${x.expected.length ? x.expected.map(o => badge(o)).join(" ") : '<span class="badge b-neutral">403 expected</span>'}</td>
+        <td>${badge(x.outcome)}</td><td>${esc(x.source || "—")}</td>
+        <td>${x.passed ? '<span class="badge b-pass">pass</span>' : `<span class="badge b-fail">fail</span><div class="note">${esc(x.failures.join("; "))}</div>`}</td></tr>`).join("");
+    };
+    ["#fFamily", "#fResult", "#fText"].forEach(s => $(s).oninput = draw); draw();
+  }
+
+  // ── ops + drill ───────────────────────────────────────────────────────────
+  function renderOps() {
+    const O = D.ops;
+    $("#opsKpis").innerHTML = O ? [
+      [O.call_volume.toLocaleString(), "call volume (golden run)"], [`${(O.error_rate * 100).toFixed(1)}%`, "error rate (fallback or raised)"],
+      [`${Math.round(O.p95_ms).toLocaleString()} ms`, "p95 latency" + (O.latency_includes_simulated_model_time ? " (incl. simulated model time)" : "")],
+      [`$${O.cost_per_resolution_usd.toFixed(4)}`, "cost per resolution (estimated)"],
+    ].map(([n, l]) => `<div class="kpi"><div class="n">${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join("") : "";
+    const X = D.drill;
+    $("#drillCard").innerHTML = X ? `<p>Release <b>${esc(X.bad_release)}</b> pushed without the gate; detected after <b>${esc(X.requests_to_detect)}</b> requests;
+      time to verified recovery <b>${esc(X.time_to_verified_recovery_s)} s</b>. Blast radius: ${esc(X.blast_radius.requests_on_bad_release)} requests,
+      ${esc(X.blast_radius.failed)} failed, ${esc(X.blast_radius.unsafe_approvals)} unsafe approvals. Spawned eval case <span class="mono">${esc(X.spawned_case)}</span>.</p>
+      <ul class="timeline">${X.events.map(e => `<li><span class="mono">${esc(e.at)}</span> · #${esc(e.i)} · <b>${esc(e.kind)}</b> — ${esc(e.label)}</li>`).join("")}</ul>`
+      : `<p class="note">No drill run baked in. Run make drill, then rebuild.</p>`;
+    document.querySelectorAll("[data-frame]").forEach(b => b.onclick = () => $("#dashFrame").src = b.dataset.frame);
+  }
+
+  // ── audit ─────────────────────────────────────────────────────────────────
+  function renderAudit() {
+    const draw = () => { const f = $("#aDecision").value;
+      $("#auditRows").innerHTML = D.audit.filter(r => !f || r.decision === f).map(r => `<tr><td class="mono">${esc(new Date(r.ts * 1000).toISOString().slice(11, 23))}</td>
+        <td>${esc(r.acting_user)}</td><td>${esc(r.group)}</td><td class="mono">${esc(r.action)}</td><td class="mono">${esc(r.resource)}</td>
+        <td>${r.decision === "deny" ? '<span class="badge b-fail">deny</span>' : '<span class="badge b-pass">' + esc(r.decision) + "</span>"}</td><td>${esc(r.reason)}</td></tr>`).join(""); };
+    $("#aDecision").oninput = draw; draw();
+  }
+
+  // ── live mode settings ────────────────────────────────────────────────────
+  $("#apiUrl").value = api;
+  $("#buildLine").textContent = `Portal data built ${D.built} from the real pipeline (mock brain, release ${D.release.version}, model pinned: ${D.release.model_id}).`;
+  $("#saveApi").onclick = async () => { const u = $("#apiUrl").value.trim(); if (!/^https:\/\//.test(u)) { $("#apiStatus").textContent = "Enter an https:// URL."; return; }
+    $("#apiStatus").textContent = "Checking /health…";
+    try { const r = await fetch(u.replace(/\/$/, "") + "/health"); const b = await r.json();
+      api = u; store.set("api", api); setMode(); renderDetail(); $("#apiStatus").textContent = `Connected: release ${b.release}, brain ${b.brain}.`;
+    } catch (e) { $("#apiStatus").textContent = "Could not reach " + u + ": " + e.message; } };
+  $("#clearApi").onclick = () => { api = ""; store.set("api", ""); setMode(); renderDetail(); $("#apiStatus").textContent = "Using baked demo data."; };
+
+  renderQueue(); renderDetail(); renderEvals(); renderOps(); renderAudit();
+})();
+</script>
+</body>
+</html>
